@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="./js/nav.js"></script>
+    <title>Login</title>
+  </head>
+  <body>
+    <header>
+      <img src="./Bilder/LogBild.jpg" />
+    </header>
+    <main class="container">
+      <nav id="nav">
+        <div class="nav-content">
+          <div class="nav-content-item">
+            <a href="/home">Home</a>
+          </div>
+          <div class="nav-content-item">
+            <a href="/ueber_uns">Über uns</a>
+          </div>
+          <div class="nav-content-item">
+            <a href="/shop">Shop</a>
+          </div>
+          <div class="nav-content-item">
+            <a href="/kontakt">Kontakt</a>
+          </div>
+          <div class="nav-content-item">
+            <a href="/login">Login</a>
+          </div>
+        </div>
+      </nav>
+    </main>
+    <hr class="separator" />
+    <main>
+      <div id="content-container">
+        <h1>Login</h1>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <form method="post" id="benutzerLogin">
+            <div class="form-group">
+              <label>Email *</label>
+              <input
+                type="email"
+                name="LGform1_user"
+                class="form-control"
+                id="email"
+                required=""
+              />
+            </div>
+            <div class="form-group">
+              <label>Passwort *</label>
+              <input
+                type="password"
+                name="LGform1_pwd"
+                class="form-control"
+                id="passwort"
+                required=""
+              />
+            </div>
+            <input class="sub-btn1" type="submit" value="Login" />
+          </form>
+          <form action="/registrierung">
+            <input class="sub-btn2" type="submit" value="Neu Registrieren" />
+          </form>
+        </div>
+      </div>
+    </main>
+    <footer>
+      <a id="impressum" href="/impressum">Impressum</a>
+      <span id="footer-spacer-l" class="footer-spacer"></span>
+      <a id="datenschutz" href="/datenschutz">Datenschutz</a>
+      <span id="footer-spacer-r" class="footer-spacer"></span>
+      <a id="agb" href="/agb">AGB</a>
+    </footer>
+  </body>
+</html>

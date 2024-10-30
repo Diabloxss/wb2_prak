@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <title>FitTime online</title>
+  </head>
+  <body>
+    <header>
+      <img src="./Bilder/LogBild.jpg" />
+    </header>
+    <main class="container">
+      <nav id="nav">
+        <div class="nav-content">
+            <div class="nav-content-item">
+              <a href="/home">Home</a>
+            </div>
+            <div class="nav-content-item">
+              <a href="/ueber_uns">Über uns</a>
+            </div>
+            <div class="nav-content-item">
+              <a href="/shop">Shop</a>
+            </div>
+            <div class="nav-content-item">
+              <a href="/kontakt">Kontakt</a>
+            </div>
+            <div class="nav-content-item">
+              <a href="/login">Login</a>
+          </div>
+        </div>
+
+        <div class="nav-hamburger">
+          <div class="line"></div>
+          <div class="line-space"></div>
+          <div class="line"></div>
+          <div class="line-space"></div>
+          <div class="line"></div>
+        </div>
+        <div class="nav-content-item" id="nav-content-warenkorb">
+          <a href="/warenkorb">
+            <img id="warenkorb-img-white" src="./Bilder/warenkorb_white.png" />
+            <img id="warenkorb-img-color" src="./Bilder/warenkorb_color.png" />
+            <span>Gesamt: <span id="warenkorbWert"></span>€</span>
+          </a>
+        </div>
+      </nav>
+      <div id="content-container">
+        <div class="home-bilder"></div>
+        <div id="prev" class="home-arrow" onclick="plusImg(-1)">&#10094;</div>
+        <div id="next" class="home-arrow" onclick="plusImg(1)">&#10095;</div>
+        <div class="home-dots">
+          <span class="dot" onclick="currentImg(1)"></span>
+          <span class="dot" onclick="currentImg(2)"></span>
+        </div>
+      </div>
+    </main>
+    <footer>
+      <a id="impressum" href="/impressum">Impressum</a>
+      <span id="footer-spacer-l" class="footer-spacer"></span>
+      <a id="datenschutz" href="/datenschutz">Datenschutz</a>
+      <span id="footer-spacer-r" class="footer-spacer"></span>
+      <a id="agb" href="/agb">AGB</a>
+    </footer>
+  </body>
+</html>

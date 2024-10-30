@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FitTime</title>
+  </head>
+  <body>
+    <div id="popup">
+      <div id="popup-window">
+        <h1>Vielen Dank für Ihren Einkauf</h1>
+        <h3>Bestellung erfolgreich</h3>
+        <p>
+          Durch einen Klick auf den Download-Button, können Sie die
+          Bestellbestätigung mit den Zahlungsinformationen herunterladen.
+        </p>
+        <p>Die Rechung wird zusammen mit ihrer Bestellung geliefert.</p>
+        <div id="popup-buttons">
+          <div id="download" class="button">Download</div>
+          <div id="close" class="button">Schließen</div>
+        </div>
+      </div>
+    </div>
+    <header>
+        <img src="./Bilder/LogBild.jpg" />
+    </header>
+    <main class="container">
+      <nav id="nav">
+        <div class="nav-content">
+          <div class="nav-content-item">
+            <a href="/home">Home</a>
+          </div>
+          <div class="nav-content-item">
+            <a href="/home">Home</a>
+          </div>
+          <div class="nav-content-item">
+            <a href="/ueber_uns">Über uns</a>
+          </div>
+          <div class="nav-content-item">
+            <a href="/shop">Shop</a>
+          </div>
+          <div class="nav-content-item">
+            <a href="/kontakt">Kontakt</a>
+          </div>
+          <div class="nav-content-item">
+            <a href="/login">Login</a>
+          </div>
+        </div>
+
+        <div class="nav-hamburger">
+          <div class="line"></div>
+          <div class="line-space"></div>
+          <div class="line"></div>
+          <div class="line-space"></div>
+          <div class="line"></div>
+        </div>
+        <div class="nav-content-item" id="nav-content-warenkorb">
+          <a href="/warenkorb">
+            <img id="warenkorb-img-white" src="./Bilder/warenkorb_white.png" />
+            <img id="warenkorb-img-color" src="./Bilder/warenkorb_color.png" />
+            <span>Gesamt: <span id="warenkorbWert"></span>€</span>
+          </a>
+        </div>
+      </nav>
+
+      <div id="content-container">
+        <h1>Checkout</h1>
+        <div id="warenkorb-liste"></div>
+
+        <div class="warenkorb-trennstrich"></div>
+        <h2>Gesamt:</h2>
+        <div class="warenkorb-gesamt">
+          <div class="warenkorb-gesamt-info">
+            <div class="warenkorb-gesamt-text">
+              <div><b>Endbetrag:</b></div>
+            </div>
+            <div id="gesamt-brutto"></div>
+          </div>
+          <div class="warenkorb-gesamt-button">
+            <div class="button" id="bestätigen">Kostenpflichtig bestellen</div>
+            <div class="button" id="abbruch">Abbruch</div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer>
+      <a id="impressum" href="/impressum">Impressum</a>
+      <span id="footer-spacer-l" class="footer-spacer"></span>
+      <a id="datenschutz" href="/datenschutz">Datenschutz</a>
+      <span id="footer-spacer-r" class="footer-spacer"></span>
+      <a id="agb" href="/agb">AGB</a>
+    </footer>
+  </body>
+</html>

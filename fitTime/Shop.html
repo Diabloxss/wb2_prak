@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LuFaSa online</title>
+  </head>
+  <body>
+    <header>
+        <img src="./Bilder/LogBild.jpg" />
+    </header>
+    <main class="container">
+      <nav id="nav">
+        <div class="nav-content">
+          <div class="nav-content-item">
+            <a href="/home">Home</a>
+          </div>
+          <div class="nav-content-item">
+            <a href="/home">Home</a>
+          </div>
+          <div class="nav-content-item">
+            <a href="/ueber_uns">Über uns</a>
+          </div>
+          <div class="nav-content-item">
+            <a href="/shop">Shop</a>
+          </div>
+          <div class="nav-content-item">
+            <a href="/kontakt">Kontakt</a>
+          </div>
+          <div class="nav-content-item">
+            <a href="/login">Login</a>
+          </div>
+        </div>
+
+        <div class="nav-hamburger">
+          <div class="line"></div>
+          <div class="line-space"></div>
+          <div class="line"></div>
+          <div class="line-space"></div>
+          <div class="line"></div>
+        </div>
+        <div class="nav-content-item" id="nav-content-warenkorb">
+          <a href="/warenkorb">
+            <img id="warenkorb-img-white" src="./Bilder/warenkorb_white.png" />
+            <img id="warenkorb-img-color" src="./Bilder/warenkorb_color.png" />
+            <span>Gesamt: <span id="warenkorbWert"></span>€</span>
+          </a>
+        </div>
+      </nav>
+
+      <h1>Shop</h1>
+
+      <div id="adjustments">
+        <div class="adjustment" id="searchbar">
+          <input
+            type="search"
+            id="search"
+            placeholder="Suchen Sie etwas bestimmtes..."
+          />
+          <button id="btn_search">Suchen</button>
+        </div>
+        <div class="adjustment" id="filter-container">
+          <div id="filter">
+            <div id="btn_filter">
+              <img id="filter-icon" src="./Bilder/filter.png" />
+              <div id="btn-filter-text">Filter</div>
+              <img id="filter-dropdown-arrow"src="./Bilder/dropDown_down.png"/>
+            </div>
+            <div class="content" id="filter-content">
+              <div id="preis">Preis:</div>
+              <div id="preis-content">
+                <input type="number" id="preis-min" placeholder="min. €" />
+                -
+                <input type="number" id="preis-max" placeholder="max. €" />
+              </div>
+
+              <div id="bewertung">Bewertung:</div>
+              <div id="bewertung-content" data-stars="0">
+                <div class="bewertung-stars">
+                  <div id="bewertung-stars-grey">
+                    <div class="bewertung-star" data-starcount="1">
+                      <img src="./Bilder/star_grey.png" />
+                    </div>
+                    <div class="bewertung-star" data-starcount="2">
+                      <img src="./Bilder/star_grey.png" />
+                    </div>
+                    <div class="bewertung-star" data-starcount="3">
+                      <img src="./Bilder/star_grey.png" />
+                    </div>
+                    <div class="bewertung-star" data-starcount="4">
+                      <img src="./Bilder/star_grey.png" />
+                    </div>
+                    <div class="bewertung-star" data-starcount="5">
+                      <img src="./Bilder/star_grey.png" />
+                    </div>
+                  </div>
+                  <div id="bewertung-stars-gold">
+                    <div
+                      class="bewertung-star filter-gold gold"
+                      data-starcount="1"
+                      data-checked="false"
+                    >
+                      <img
+                        class="bewertung-goldStar"
+                        src="./Bilder/star_gold.png"
+                      />
+                    </div>
+                    <div
+                      class="bewertung-star filter-gold gold"
+                      data-starcount="2"
+                      data-checked="false"
+                    >
+                      <img
+                        class="bewertung-goldStar"
+                        src="./Bilder/star_gold.png"
+                      />
+                    </div>
+                    <div
+                      class="bewertung-star filter-gold gold"
+                      data-starcount="3"
+                      data-checked="false"
+                    >
+                      <img
+                        class="bewertung-goldStar"
+                        src="./Bilder/star_gold.png"
+                      />
+                    </div>
+                    <div
+                      class="bewertung-star filter-gold gold"
+                      data-starcount="4"
+                      data-checked="false"
+                    >
+                      <img
+                        class="bewertung-goldStar"
+                        src="./Bilder/star_gold.png"
+                      />
+                    </div>
+                    <div
+                      class="bewertung-star filter-gold gold"
+                      data-starcount="5"
+                      data-checked="false"
+                    >
+                      <img
+                        class="bewertung-goldStar"
+                        src="./Bilder/star_gold.png"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <button id="btn-bewertung-loeschen">Löschen</button>
+              </div>
+       
+              <div id="filter-anwenden">
+                <button id="btn-filter-anwenden">Anwenden</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="spacer" id="spacer_f"></div>
+
+        <div class="adjustment" id="kategorie-container">
+          <div id="kategorie">
+            <div id="btn_kategorie">
+              <span id="btn-kategorie-label">Alle Kategorien</span>
+              <img
+                id="kategorie-dropdown-arrow"
+                src="./Bilder/dropDown_down.png"
+              />
+            </div>
+            <div id="kategorie-content" class="content">
+              <ul id="kategorie-liste">
+                <li class="kategorien kategorieGewaehlt" data-katID="1">
+                  Alle Kategorien
+                </li>
+                <li class="kategorien" data-katID="2">Bekleidung</li>
+                <li class="kategorien" data-katID="3">Supplements</li>
+                <li class="kategorien" data-katID="4">Bälle & Zubehör</li>
+                <li class="kategorien" data-katID="5">Fitness Geräte</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="spacer" id="spacer_b"></div>
+
+        <div class="adjustment" id="sortieren-container">
+          <div id="sortieren">
+            <div id="btn_sortieren">
+              <span id="btn-sortieren-label">Sortieren</span>
+              <img
+                id="sortieren-dropdown-arrow"
+                src="./Bilder/dropDown_down.png"
+              />
+            </div>
+          *
+            <div class="content" id="sortieren-content">
+              <ul>
+                <li class="sort-item" data-sort="keine" data-checked="true">
+                  <span class="sort-checkmark sort-checked"></span>
+                  <span class="sort-item-label">Keine</span>
+                </li>
+                <li
+                  class="sort-item"
+                  data-sort="preis-auf"
+                  data-checked="false"
+                >
+                  <span class="sort-checkmark"></span>
+                  <span class="sort-item-label">Preis aufsteigend</span>
+                </li>
+                <li class="sort-item" data-sort="preis-ab" data-checked="false">
+                  <span class="sort-checkmark"></span>
+                  <span class="sort-item-label">Preis absteigend</span>
+                </li>
+                <li
+                  class="sort-item"
+                  data-sort="bewertung-auf"
+                  data-checked="false"
+                >
+                  <span class="sort-checkmark"></span>
+                  <span class="sort-item-label">Bewertung aufsteigend</span>
+                </li>
+
+                <li
+                  class="sort-item"
+                  data-sort="bewertung-ab"
+                  data-checked="false"
+                >
+                  <span class="sort-checkmark"></span>
+                  <span class="sort-item-label">Bewertung absteigend</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="content-container">
+        <div id="artikel-liste"></div>
+        <div class="artikel-liste-spacer"></div>
+        <div class="seitenwahl">
+          <img src="./Bilder/dropDown_left.png" id="pageLeft" />
+          Seite<span class="pageShow" id="pageNow"> 1 </span> /
+          <span class="pageShow" id="pageMax"></span>
+          <img src="./Bilder/dropDown_right.png" id="pageRight" />
+        </div>
+        <div class="artikel-liste-spacer"></div>
+      </div>
+    </main>
+    <footer>
+      <a id="impressum" href="/impressum">Impressum</a>
+      <span id="footer-spacer-l" class="footer-spacer"></span>
+      <a id="datenschutz" href="/datenschutz">Datenschutz</a>
+      <span id="footer-spacer-r" class="footer-spacer"></span>
+      <a id="agb" href="/agb">AGB</a>
+    </footer>
+  </body>
+</html>
