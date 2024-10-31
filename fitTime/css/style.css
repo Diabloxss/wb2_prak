@@ -192,3 +192,566 @@ body {
 .edit-btn i:hover {
     color: #007BFF; /* Farbe des Icons beim Hover */
 }
+
+/* Allgemeine Einstellungen */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+}
+
+/* Header */
+.header {
+    background-color: #d69e2e; /* Goldfarbener Hintergrund */
+    color: #000;
+    text-align: center;
+    padding: 40px 0;
+}
+
+.header h1 {
+    font-size: 3em;
+    font-weight: bold;
+    margin: 0;
+}
+
+/* Navigation */
+.navbar {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    background-color: #fff;
+    padding: 15px 0;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: #000;
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 5px;
+    background-color: #f0f0f0;
+}
+
+.navbar .button {
+    background-color: #000;
+    color: #fff;
+}
+
+/* Formular */
+.form-container {
+    background-color: #fff;
+    max-width: 400px;
+    margin: 40px auto;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.form-container label {
+    display: block;
+    text-align: left;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-container input[type="email"],
+.form-container input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 10px;
+    background-color: #000;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+.submit-btn:hover {
+    background-color: #333;
+}
+
+.forgot-password {
+    display: block;
+    margin-top: 10px;
+    font-size: 0.9em;
+    color: #000;
+    text-decoration: none;
+}
+
+.forgot-password:hover {
+    text-decoration: underline;
+}
+
+/* Footer */
+.footer {
+    display: flex;
+    justify-content: center;
+    background-color: #d69e2e; /* Goldfarbener Hintergrund */
+    padding: 20px 0;
+}
+
+.footer a {
+    margin: 0 20px;
+    color: #000;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.footer a:hover {
+    text-decoration: underline;
+}
+
+/* Allgemeine Einstellungen */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+}
+
+/* Header */
+.header {
+    background-color: #d69e2e; /* Goldfarbener Hintergrund */
+    color: #000;
+    text-align: center;
+    padding: 40px 0;
+}
+
+.header h1 {
+    font-size: 3em;
+    font-weight: bold;
+    margin: 0;
+}
+
+/* Navigation */
+.navbar {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    background-color: #fff;
+    padding: 15px 0;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: #000;
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 5px;
+    background-color: #f0f0f0;
+}
+
+.navbar .button {
+    background-color: #000;
+    color: #fff;
+}
+
+/* Profil Bereich */
+.profile-container {
+    max-width: 800px;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+}
+
+.profile-container h2 {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.profile-section {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.profile-box {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+.profile-box h3 {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+/* Footer */
+.footer {
+    display: flex;
+    justify-content: center;
+    background-color: #d69e2e; /* Goldfarbener Hintergrund */
+    padding: 20px 0;
+}
+
+.footer a {
+    margin: 0 20px;
+    color: #000;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.footer a:hover {
+    text-decoration: underline;
+}
+
+/* Profil Box als Link gestalten */
+.profile-box {
+    display: block; /* Damit der Link die gesamte Box umfasst */
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    color: #000;
+    text-decoration: none; /* Entfernt die Standard-Link-Unterstreichung */
+    font-weight: bold;
+    transition: background-color 0.3s, border-color 0.3s; /* Übergang für Hover-Effekt */
+}
+
+/* Hover-Effekt für die Profil Box */
+.profile-box:hover {
+    background-color: #e0e0e0; /* Farbe beim Hover */
+    border-color: #bbb;
+}
+
+/* Allgemeine Einstellungen */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+}
+
+/* Header */
+.header {
+    background-color: #d69e2e; /* Goldfarbener Hintergrund */
+    color: #000;
+    text-align: center;
+    padding: 40px 0;
+}
+
+.header h1 {
+    font-size: 3em;
+    font-weight: bold;
+    margin: 0;
+}
+
+/* Navigation */
+.navbar {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    background-color: #fff;
+    padding: 15px 0;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: #000;
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 5px;
+    background-color: #f0f0f0;
+}
+
+.navbar .button {
+    background-color: #000;
+    color: #fff;
+}
+
+/* Bestellungen Bereich */
+.orders-container {
+    max-width: 800px;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+}
+
+.orders-container h2 {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.order-item {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    margin-bottom: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+.product-image {
+    width: 60px;
+    height: 60px;
+    background-color: #e0e0e0;
+    border-radius: 5px;
+    margin-right: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.product-image::before {
+    content: "🖼️"; /* Platzhalter für ein Bild-Icon */
+    font-size: 24px;
+    color: #999;
+}
+
+.product-info h3 {
+    font-size: 1.1em;
+    font-weight: bold;
+    margin: 0;
+}
+
+.product-info p {
+    font-size: 0.9em;
+    color: #666;
+    margin: 5px 0 0 0;
+}
+
+.quantity {
+    margin-left: auto;
+    font-size: 1.2em;
+    font-weight: bold;
+    background-color: #e0e0e0;
+    color: #333;
+    padding: 8px 12px;
+    border-radius: 5px;
+}
+
+/* Footer */
+.footer {
+    display: flex;
+    justify-content: center;
+    background-color: #d69e2e; /* Goldfarbener Hintergrund */
+    padding: 20px 0;
+}
+
+.footer a {
+    margin: 0 20px;
+    color: #000;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.footer a:hover {
+    text-decoration: underline;
+}
+
+/* Über Uns Bereich */
+.about-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    max-width: 800px;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+}
+
+.team-member {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+.member-image {
+    width: 100%;
+    max-width: 200px;
+    height: 150px;
+    background-color: #e0e0e0;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.member-image::before {
+    content: "🖼️"; /* Platzhalter-Icon für das Bild */
+    font-size: 48px;
+    color: #999;
+}
+
+.team-member h3 {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin: 10px 0 5px 0;
+}
+
+.team-member p {
+    font-size: 0.9em;
+    color: #666;
+}
+
+/* Auswahlbereich */
+.selection-container {
+    max-width: 600px;
+    margin: 40px auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.selection-box {
+    display: block;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #000;
+    text-decoration: none;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.selection-box:hover {
+    background-color: #e0e0e0; /* Hover-Effekt */
+    border-color: #bbb;
+}
+
+/* Bestellbestätigung Bereich */
+.confirmation-container {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 20px;
+    text-align: center;
+}
+
+.confirmation-container h2 {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.confirmation-container p {
+    font-size: 1em;
+    color: #333;
+}
+
+.order-summary {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    margin-top: 20px;
+    text-align: left;
+}
+
+.order-summary h3 {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.order-summary ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.order-summary ul li {
+    margin: 5px 0;
+}
+
+.order-summary p {
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+.print-btn {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #000;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+.print-btn:hover {
+    background-color: #333;
+}
+
+/* Zahlungsinformationen Bereich */
+.payment-info-container {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 20px;
+    text-align: center;
+}
+
+.payment-info-container h2 {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.payment-info-container p {
+    font-size: 1em;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.payment-details {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: left;
+    font-size: 0.9em;
+    color: #555;
+}
+
+.print-btn {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #000;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+.print-btn:hover {
+    background-color: #333;
+}
