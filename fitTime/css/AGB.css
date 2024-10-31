@@ -1,0 +1,142 @@
+/* Grundlegendes Styling für die gesamte Seite */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    color: #333;
+    background-color: #f5f5f5; /* Leichtes Grau für den Hintergrund */
+}
+
+/* Header-Bereich */
+header {
+    background-color: #d29000;
+    color: #000;
+    padding: 20px;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.5em;
+}
+
+/* Navigationsleiste */
+nav {
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    border-bottom: 2px solid #333;
+}
+
+.nav-content-item a {
+    text-decoration: none;
+    color: #333;
+    padding: 10px 15px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.nav-content-item a:hover {
+    background-color: #f0f0f0;
+    border-radius: 5px; /* Abgerundete Ecken für Links bei Hover */
+}
+
+/* Hamburger-Menü (optional, falls Mobilnavigation benötigt wird) */
+.nav-hamburger {
+    display: none;
+}
+
+/* Hauptinhalt */
+main {
+    padding: 20px;
+    text-align: center;
+}
+
+main h1 {
+    font-size: 2em;
+    color: #000;
+    margin-bottom: 20px;
+}
+
+/* Textabschnitt */
+.text {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: left;
+    line-height: 1.6;
+}
+
+.text h2 {
+    font-size: 1.8em;
+    color: #000;
+    margin-bottom: 10px;
+}
+
+.text h3 {
+    font-size: 1.4em;
+    color: #000;
+    margin-bottom: 5px;
+    margin-top: 20px;
+}
+
+.text b {
+    color: #d29000; /* Farbe für wichtige Textstellen */
+}
+
+.text a {
+    color: #d29000;
+    text-decoration: none;
+}
+
+.text a:hover {
+    text-decoration: underline;
+}
+
+/* Footer */
+footer {
+    background-color: #d29000;
+    color: #000;
+    padding: 20px;
+    text-align: center;
+    font-size: 0.9em;
+}
+
+footer a {
+    color: #333;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* Abstände für das Inhaltsverzeichnis und Listen */
+.text ul,
+.text ol {
+    padding-left: 20px;
+    margin: 10px 0;
+}
+
+.text ul li,
+.text ol li {
+    margin-bottom: 5px;
+}
+
+/* Links zur OS-Plattform */
+#agb a {
+    color: #333;
+    text-decoration: none;
+}
+
+#agb a:hover {
+    text-decoration: underline;
+}
+
+/* Responsives Design für mobile Geräte */
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column;
+        align-items: center;
+    }
+}

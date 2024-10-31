@@ -1,0 +1,122 @@
+/* Grundlegendes Styling für die gesamte Seite */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    color: #333;
+}
+
+/* Header-Bereich mit Seitennamen */
+header {
+    background-color: #d29000; /* Header-Hintergrundfarbe */
+    padding: 20px;
+    text-align: center;
+}
+
+.site-name {
+    font-size: 2.5em; /* Schriftgröße für "FitTime" */
+    font-weight: bold; /* Fett */
+    color: #fff; /* Schriftfarbe weiß */
+    text-transform: uppercase; /* Großbuchstaben */
+    letter-spacing: 2px; /* Abstand zwischen Buchstaben */
+    margin: 0;
+}
+
+/* Navigationsleiste */
+#nav {
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 20px;
+    border-bottom: 2px solid #333;
+}
+
+/* Navigationselemente zentrieren */
+.nav-content {
+    display: flex;
+    gap: 15px;
+}
+
+.nav-content-item a {
+    text-decoration: none;
+    color: #333;
+    padding: 10px 15px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.nav-content-item a:hover {
+    background-color: #f0f0f0;
+}
+
+/* Hamburger Menü */
+.nav-hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.line, .line-space {
+    width: 25px;
+    height: 3px;
+    background-color: #333;
+}
+
+.line-space {
+    height: 5px;
+}
+
+/* Hauptinhalt */
+.container {
+    padding: 20px;
+}
+
+#content-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+.center-image {
+    max-width: 100%;
+    height: auto;
+    width: 300px; /* Bildbreite */
+    border-radius: 8px; /* Abgerundete Ecken */
+}
+
+/* Footer */
+footer {
+    background-color: #d29000;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    font-size: 0.9em;
+}
+
+footer a {
+    color: #333;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* Mobile Ansicht */
+@media (max-width: 768px) {
+    .nav-content {
+        display: none;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .nav-content.show {
+        display: flex;
+    }
+
+    .nav-hamburger {
+        display: flex;
+    }
+}
