@@ -167,3 +167,28 @@ body {
     font-weight: bold;
     color: #000; /* Schriftfarbe schwarz */
 }
+
+.input-group {
+    display: flex;
+    align-items: center;
+}
+
+.input-group input {
+    flex: 1;
+    margin-right: 10px;
+}
+
+.edit-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+.edit-btn i {
+    color: #555; /* Farbe des Icons */
+}
+
+.edit-btn i:hover {
+    color: #007BFF; /* Farbe des Icons beim Hover */
+}
