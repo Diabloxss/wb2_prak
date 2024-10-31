@@ -1,135 +1,80 @@
 <!DOCTYPE html>
 <html lang="de">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>FitTime</title>
-  </head>
-  <body>
-    <header>
-      <img src="./Bilder/LogBild.jpg" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AGB - FitTime</title>
+    <link rel="stylesheet" href="css/style.css"> <!-- Pfad zu Ihrer CSS-Datei -->
+</head>
+<body>
+
+    <!-- Header-Bereich -->
+    <header class="header">
+        <h1><a href="index.html">FitTime</a></h1>
     </header>
-    <main class="container">
-      <nav id="nav">
-        <div class="nav-content">
-          <div class="nav-content-item">
-            <a href="/home">Home</a>
-          </div>
-          <div class="nav-content-item">
-            <a href="/home">Home</a>
-          </div>
-          <div class="nav-content-item">
-            <a href="/ueber_uns">Über uns</a>
-          </div>
-          <div class="nav-content-item">
-            <a href="/shop">Shop</a>
-          </div>
-          <div class="nav-content-item">
-            <a href="/kontakt">Kontakt</a>
-          </div>
-          <div class="nav-content-item">
-            <a href="/login">Login</a>
-          </div>
-        </div>
 
-        <div class="nav-hamburger">
-          <div class="line"></div>
-          <div class="line-space"></div>
-          <div class="line"></div>
-          <div class="line-space"></div>
-          <div class="line"></div>
-        </div>
-        <div class="nav-content-item" id="nav-content-warenkorb">
-          <a href="/warenkorb">
-            <img id="warenkorb-img-white" src="./Bilder/warenkorb_white.png" />
-            <img id="warenkorb-img-color" src="./Bilder/warenkorb_color.png" />
-            <span>Gesamt: <span id="warenkorbWert"></span>€</span>
-          </a>
-        </div>
-      </nav>
+    <!-- Navigationsleiste -->
+    <nav class="navbar">
+        <a href="index.html">Home</a>
+        <a href="ueber-uns.html">Über Uns</a>
+        <a href="shop.html">Shop</a>
+        <a href="kontakt.html">Kontakt</a>
+        <a href="profil.html" class="button">Profil</a>
+    </nav>
 
-      <div id="content-container">
-        <h1>AGB</h1>
-        <div class="text">
-          <h2>Allgemeine Geschäftsbedingungen & Kundeninformationen</h2>
-          <br />
-          <br />
-          <h3>Inhaltsverzeichnis</h3>
-          <br />
-          A. Allgemeine Geschäftsbedingungen <br />
-          <br />
-          1. ... <br />
-          2. ... <br />
-          3. ... <br />
-          <br />
-          B. Kundeninformationen<br />
-          <br />
-          1. ... <br />
-          2. ... <br />
-          3. ... <br />
+    <!-- Hauptinhalt: AGB-Bereich -->
+    <div class="agb-content">
+        <div class="agb-container">
+            <h2>Allgemeine Geschäftsbedingungen (AGB)</h2>
+            
+            <section>
+                <h3>1. Geltungsbereich</h3>
+                <p>Diese allgemeinen Geschäftsbedingungen (AGB) gelten für alle Bestellungen, die Sie bei dem Online-Shop FitTime tätigen.</p>
+            </section>
 
-          <div id="agb">
-            <h3>A. Allgemeine Geschäftsbedingungen</h3>
-            <br />
-            <b>1. Geltungsbereich</b><br /><br />
-            <br />
-            <br />
-            <b>2. Vertragsschluss</b><br />
-            <br />
-            <br />
-            <br />
-            <b>3. Preise und Zahlungsbedingungen</b> <br />
-            <br />
-            <br />
-            <b>5. Mängelhaftung</b> <br />
-            <br />
-            <br />
-            <b>6. Haftung</b> <br />
-            <br />
-            <br />
-            <br />
-            <b>7. Eigentumsvorbehalt</b><br />
-            <br />
-            <br />
-            <b>8. Informationen zur Online-Streitbeilegung</b><br />
-            Die Kommission der Europäischen Union stellt eine Plattform zur
-            Online-Beilegung von Streitigkeiten zur Verfügung. Diese sog.
-            „OS-Plattform“ soll Unternehmen und Verbrauchern helfen,
-            Streitigkeiten über vertragliche Verpflichtungen aus Kauf- oder
-            Dienstleistungsverträge, die über das Internet geschlossen wurden,
-            außergerichtlich zu klären. Die OS-Plattform ist unter folgendem
-            Link erreichbar sein:
-            <a href="https://ec.europa.eu/consumers/odr/"
-              >https://ec.europa.eu/consumers/odr/</a
-            >
-            Der Verkäufer ist grundsätzlich nicht bereit und verpflichtet, an
-            Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle
-            teilzunehmen. <br />
-            <br />
-            <b>9. Sonstige Bestimmungen</b> <br />
-            <br />
-           <br />
-            <br />
-            <b>10. Schlussbestimmungen</b> <br />
-            <br />
-            <br />
-            
-          </div>
-          <div id="kundeninfo">
-            <h3>Kundeninformationen</h3>
-            
-            
-            
-          </div>
+            <section>
+                <h3>2. Vertragspartner, Vertragsschluss</h3>
+                <p>Der Kaufvertrag kommt zustande mit FitTime GmbH. Mit Einstellung der Produkte in den Online-Shop geben wir ein verbindliches Angebot zum Vertragsschluss über diese Artikel ab.</p>
+            </section>
+
+            <section>
+                <h3>3. Preise und Zahlungsbedingungen</h3>
+                <p>Alle Preise sind Endpreise und beinhalten die gesetzliche Mehrwertsteuer. Die Zahlungsmöglichkeiten werden Ihnen im Bestellprozess angezeigt.</p>
+            </section>
+
+            <section>
+                <h3>4. Lieferung und Versandkosten</h3>
+                <p>Zusätzlich zu den angegebenen Produktpreisen können Versandkosten anfallen. Diese werden Ihnen im Bestellprozess deutlich mitgeteilt.</p>
+            </section>
+
+            <section>
+                <h3>5. Eigentumsvorbehalt</h3>
+                <p>Die Ware bleibt bis zur vollständigen Bezahlung unser Eigentum.</p>
+            </section>
+
+            <section>
+                <h3>6. Gewährleistung und Haftung</h3>
+                <p>Es gilt das gesetzliche Mängelhaftungsrecht.</p>
+            </section>
+
+            <section>
+                <h3>7. Widerrufsrecht</h3>
+                <p>Sie haben das Recht, binnen vierzehn Tagen ohne Angabe von Gründen diesen Vertrag zu widerrufen. Weitere Details finden Sie in unserer Widerrufsbelehrung.</p>
+            </section>
+
+            <section>
+                <h3>8. Schlussbestimmungen</h3>
+                <p>Es gilt deutsches Recht. Gerichtsstand ist der Sitz der FitTime GmbH.</p>
+            </section>
         </div>
-      </div>
-    </main>
-    <footer>
-      <a id="impressum" href="/impressum">Impressum</a>
-      <span id="footer-spacer-l" class="footer-spacer"></span>
-      <a id="datenschutz" href="/datenschutz">Datenschutz</a>
-      <span id="footer-spacer-r" class="footer-spacer"></span>
-      <a id="agb" href="/agb">AGB</a>
+    </div>
+
+    <!-- Footer-Bereich -->
+    <footer class="footer">
+        <a href="impressum.html">Impressum</a>
+        <a href="datenschutz.html">Datenschutz</a>
+        <a href="agb.html">AGB</a>
     </footer>
-  </body>
+
+</body>
 </html>
