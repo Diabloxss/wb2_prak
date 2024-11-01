@@ -1,4 +1,3 @@
-/* Grundlegendes Styling */
 body {
     margin: 0;
     font-family: Arial, sans-serif;
@@ -6,7 +5,7 @@ body {
     background-color: #f4f4f4;
 }
 
-/* Header */
+
 .header {
     background-color: #d29000;
     color: #fff;
@@ -24,7 +23,7 @@ body {
     text-decoration: none;
 }
 
-/* Navigation */
+
 .navbar {
     background-color: #fff;
     display: flex;
@@ -53,7 +52,7 @@ body {
     border-radius: 5px;
 }
 
-/* Hauptinhalt */
+
 .content-container {
     max-width: 800px;
     margin: 40px auto;
@@ -70,7 +69,7 @@ body {
     margin-bottom: 20px;
 }
 
-/* Datenschutz-Text */
+
 .datenschutz-text p {
     font-size: 1em;
     line-height: 1.6;
@@ -91,7 +90,7 @@ body {
     text-decoration: underline;
 }
 
-/* Footer */
+
 .footer {
     background-color: #d29000;
     color: #000;
@@ -110,7 +109,7 @@ body {
     text-decoration: underline;
 }
 
-/* Responsive Anpassung */
+
 @media (max-width: 768px) {
     .navbar {
         flex-direction: column;
