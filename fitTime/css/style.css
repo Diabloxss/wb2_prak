@@ -606,10 +606,25 @@ body {
     justify-content: center;
 }
 
+.member-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Bild skalieren und zentrieren */
+}
+
 .member-image::before {
-    content: "🖼️"; /* Platzhalter-Icon für das Bild */
+    content: ""; /* Platzhalter-Icon für das Bild */
     font-size: 48px;
     color: #999;
+    position: absolute;
+}
+
+.member-image img {
+    display: block;
+}
+
+.member-image img[src] {
+    display: inline; /* Platzhalter-Icon nur anzeigen, wenn kein Bild vorhanden */
 }
 
 .team-member h3 {
