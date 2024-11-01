@@ -10,18 +10,18 @@
 <body>
 
     <!-- Header -->
-    <div class="header">
-        <h1><a href="Home1.html">FitTime</a></h1>
-    </div>
+    <header class="header">
+        <h1>FitTime</h1>
+    </header>
 
     <!-- Navigation -->
     <div class="navbar">
-        <a href="#">Home</a>
-        <a href="#">Über Uns</a>
-        <a href="#">Shop</a>
-        <a href="#">Kontakt</a>
-        <a href="#" class="button">Profil</a>
-        <a href="#" class="cart-icon">
+        <a href="index.html">Home</a>
+        <a href="über_Uns.html">Über Uns</a>
+        <a href="shop.html">Shop</a>
+        <a href="kontakt.html">Kontakt</a>
+        <a href="profilseite.html" class="button">Profil</a>
+        <a href="warenkorb.html" class="cart-icon">
             <i class="fas fa-shopping-cart"></i> <!-- Warenkorb-Icon -->
             <span>0,00€</span>
         </a>
@@ -29,7 +29,10 @@
 
     <!-- Produktbereich -->
     <div class="product-container">
-        <div class="product-image"></div>
+        <div class="product-image">
+            <!-- Hier das Bild einfügen -->
+            <img src="images/strawberry_whey_protein.jpg" alt="Produktname" style="width: 100%; height: auto; border-radius: 8px;">
+        </div>
         <div class="product-details">
             <h2>Produktname</h2>
             <p class="price">0€</p>
@@ -48,7 +51,7 @@
                 <option value="10">10</option>
             </select>
             
-            <button class="add-to-cart-btn">Zum Warenkorb hinzufügen</button>
+            <button class="add-to-cart-btn" onclick="window.location.href='warenkorb.html';">Zum Warenkorb hinzufügen</button>
             
             <div class="product-description">
                 <h3>Produktbeschreibung</h3>
@@ -59,10 +62,11 @@
 
     <!-- Footer -->
     <div class="footer">
-        <a href="#">Impressum</a>
-        <a href="#">Datenschutz</a>
-        <a href="#">AGB</a>
+        <a href="impressum.html">Impressum</a>
+        <a href="datenschutz.html">Datenschutz</a>
+        <a href="agb.html">AGB</a>
     </div>
 
 </body>
 </html>
+

@@ -530,12 +530,6 @@ body {
     justify-content: center;
 }
 
-.product-image::before {
-    content: "🖼️"; /* Platzhalter für ein Bild-Icon */
-    font-size: 24px;
-    color: #999;
-}
-
 .product-info h3 {
     font-size: 1.1em;
     font-weight: bold;
@@ -852,11 +846,6 @@ body {
     justify-content: center;
 }
 
-.product-image::before {
-    content: "🖼️"; /* Platzhalter für Bild */
-    font-size: 48px;
-    color: #999;
-}
 
 .product-details {
     flex: 1;
@@ -962,11 +951,7 @@ body {
     justify-content: center;
 }
 
-.product-image::before {
-    content: "🖼️"; /* Platzhalter für Bild */
-    font-size: 48px;
-    color: #999;
-}
+
 
 .product-details {
     flex: 1;
@@ -1116,11 +1101,7 @@ body {
     margin-bottom: 10px;
 }
 
-.product-image::before {
-    content: "🖼️"; /* Platzhalter für Bild */
-    font-size: 48px;
-    color: #999;
-}
+
 
 .product-card p {
     margin: 5px 0;
@@ -1192,11 +1173,7 @@ body {
     justify-content: center;
 }
 
-.info-image::before {
-    content: "🖼️"; /* Platzhalter für Bild */
-    font-size: 36px;
-    color: #999;
-}
+
 
 .info-content h3 {
     margin: 0 0 5px 0;
@@ -1711,3 +1688,19 @@ footer a:hover {
         flex-direction: column;
     }
 }
+
+.product-image {
+    width: 80px; /* Breite des Containers */
+    height: 80px; /* Höhe des Containers */
+    overflow: hidden; /* Überschüssige Bildteile abschneiden */
+    border-radius: 8px; /* Abgerundete Ecken */
+    background: none; /* Entfernt jeglichen Hintergrund */
+}
+
+.product-image img {
+    width: 100%; /* Bildfüllung */
+    height: 100%; /* Bildfüllung */
+    object-fit: cover; /* Bildseitenverhältnis beibehalten und zuschneiden */
+    display: block; /* Platzhalter entfernen */
+}
+
