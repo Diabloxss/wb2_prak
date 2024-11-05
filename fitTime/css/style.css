@@ -117,10 +117,12 @@ body {
 
 .contact-form input, .contact-form textarea {
     width: 100%;
-    padding: 8px;
+    height: 50px;
+    padding: 10px;
     margin-bottom: 15px;
     border: none;
     border-radius: 5px;
+    resize: vertical;
     background-color: #555; /* Leichtes Grau für Eingabefelder */
     color: #fff; /* Weiße Schrift in Eingabefeldern */
 }
@@ -177,6 +179,13 @@ body {
     font-weight: bold;
     color: #000; /* Schriftfarbe schwarz */
 }
+.main-content P {
+    font-size: 18px;
+    color: #666; /* Optional: Grau für dezente Schriftfarbe */
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
 
 .input-group {
     display: flex;
@@ -596,9 +605,9 @@ body {
 }
 
 .member-image {
-    width: 150px;
+    width: 200px;
     max-width: 200px;
-    height: 150px;
+    height: 200px;
     background-color: #e0e0e0;
     border-radius: 8px;
     margin-bottom: 15px;
