@@ -23,7 +23,7 @@
         <a href="profilseite.html" class="button">Profil</a>
         <a href="#" class="cart-icon">
             <i class="fas fa-shopping-cart"></i> 
-            <span>0,00€</span>
+            <span>59,98€</span> <!-- Gesamtbetrag für die Navbar -->
         </a>
     </div>
 
@@ -31,6 +31,7 @@
     <div class="cart-container">
         <h2>Mein Warenkorb</h2>
 
+        <!-- Erstes Produkt -->
         <div class="cart-item">
             <div class="product-image"><img src="images/chocolate_whey_protein.jpg" alt="Produktbild 1"></div>
             <div class="product-details">
@@ -38,7 +39,26 @@
                 <p class="price">39,99€</p>
                 <label for="quantity">Menge</label>
                 <input type="number" id="quantity" name="quantity" value="1" min="1">
+                <button class="remove-btn">Löschen</button>
             </div>
+        </div>
+
+        <!-- Zweites Produkt -->
+        <div class="cart-item">
+            <div class="product-image"><img src="images/vanilla_whey_protein.jpg" alt="Vanilla Whey Protein"></div>
+            <div class="product-details">
+                <h3>Chocolate Whey Protein</h3>
+                <p class="price">39,99€</p>
+                <label for="quantity">Menge</label>
+                <input type="number" id="quantity" name="quantity" value="1" min="1">
+                <button class="remove-btn">Löschen</button>
+            </div>
+        </div>
+
+        <!-- Gesamtbetrag und MwSt -->
+        <div class="cart-summary">
+            <p id="total-price">Gesamt: 59,98€</p>
+            <p id="tax-amount">Enthaltene MwSt.: 9,57€</p> <!-- 19% MwSt.  -->
         </div>
 
         <button class="checkout-btn" onclick="window.location.href='checkout.html';">Zur Kasse</button>
@@ -53,4 +73,3 @@
 
 </body>
 </html>
-

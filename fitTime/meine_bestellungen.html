@@ -24,52 +24,45 @@
         <a href="warenkorb.html" class="cart-icon">
             <i class="fas fa-shopping-cart"></i> 
             <span>0,00€</span>
+        </a>
     </div>
 
+    <!-- Bestellungen Übersicht -->
     <div class="orders-container">
         <h2>Meine Bestellungen</h2>
-    
-        <div class="order-item">
-            <div class="product-image">
-                <img src="images/vanilla_whey_protein.jpg" alt="Whey Protein Vanille">
-            </div>
-            <div class="product-info">
-                <h3>Whey Protein</h3>
-                <p>Vanille – 1kg – 24g Protein pro Portion</p>
-            </div>
-            <div class="quantity">
-                <span>8</span>
-            </div>
-        </div>
-    
-        <div class="order-item">
-            <div class="product-image">
-                <img src="images/chocolate_whey_protein.jpg" alt="Whey Protein Schokolade">
-            </div>
-            <div class="product-info">
-                <h3>Whey Protein</h3>
-                <p>Schokolade – 1kg – 24g Protein pro Portion</p>
-            </div>
-            <div class="quantity">
-                <span>1</span>
-            </div>
-        </div>
-    
-        <div class="order-item">
-            <div class="product-image">
-                <img src="images/strawberry_whey_protein.jpg" alt="Whey Protein Erdbeere">
-            </div>
-            <div class="product-info">
-                <h3>Whey Protein</h3>
-                <p>Erdbeere – 1kg – 24g Protein pro Portion</p>
-            </div>
-            <div class="quantity">
-                <span>2</span>
-            </div>
-        </div>
+        
+        <!-- Bestellübersicht -->
+        <table class="order-summary-table">
+            <thead>
+                <tr>
+                    <th>Datum</th>
+                    <th>Bestellnummer</th>
+                    <th>Gesamtsumme</th>
+                    <th>Details</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>20.10.2023</td>
+                    <td>#12345</td>
+                    <td>199,90€</td>
+                    <td><a href="bestellung_details.html?order=12345" class="detail-btn">Details</a></td>
+                </tr>
+                <tr>
+                    <td>10.10.2023</td>
+                    <td>#12344</td>
+                    <td>89,99€</td>
+                    <td><a href="bestellung_details.html?order=12344" class="detail-btn">Details</a></td>
+                </tr>
+                <tr>
+                    <td>05.10.2023</td>
+                    <td>#12343</td>
+                    <td>129,90€</td>
+                    <td><a href="bestellung_details.html?order=12343" class="detail-btn">Details</a></td>
+                </tr>
+            </tbody>
+        </table>
     </div>
-    
-    
 
     <!-- Footer -->
     <div class="footer">

@@ -24,6 +24,7 @@
         <a href="warenkorb.html" class="cart-icon">
             <i class="fas fa-shopping-cart"></i> 
             <span>0,00€</span>
+        </a>
     </div>
 
     <!-- Kassenformular -->
@@ -32,9 +33,6 @@
 
             <label for="vorname">Vorname*</label>
             <input type="text" id="vorname" name="vorname" required>
-
-            <label for="nachname">Nachname*</label>
-            <input type="text" id="nachname" name="nachname" required>
 
             <label for="strasse">Straße & Hausnummer*</label>
             <input type="text" id="strasse" name="strasse" required>
@@ -50,6 +48,12 @@
 
             <p class="payment-info">Aktuell ist nur die Zahlung per Rechnung möglich. Alle nötigen Zahlungsinfos erhalten Sie auf der Rechnung nach Abschluss des Kaufes.</p>
 
+            <!-- Checkbox für AGB-Akzeptanz -->
+            <label>
+                <input type="checkbox" id="agb" name="agb" required> Ich akzeptiere die <a href="agb.html">AGB</a>*
+            </label>
+
+            <!-- Weiter-Button -->
             <button type="submit" class="submit-btn">Weiter</button>
         </form>
     </div>
