@@ -60,26 +60,30 @@ body {
 
 /* Formularbereich */
 .form-container {
-    background-color: #f2f2f2;
+    background-color: #fff;
     padding: 40px;
     max-width: 600px;
     margin: 20px auto;
     border: 2px solid #333;
     border-radius: 5px;
+    
 }
 
 .form-container label {
     font-weight: bold;
     margin-bottom: 5px;
     display: block;
+    color: #333;
+    font-weight: bold; 
+    font-size: 1em; 
+    text-decoration: none; 
 }
 
 .form-container input[type="text"],
 .form-container input[type="email"] {
     width: calc(100% - 30px);
-    padding: 10px;
+    padding: 10px 15px;
     margin-bottom: 20px;
-    border: 1px solid #ccc;
     border-radius: 5px;
     box-sizing: border-box;
 }
@@ -102,18 +106,20 @@ body {
 
 /* Kontaktformular */
 .contact-form {
-    background-color: #333; /* Dunkler Hintergrund */
+    background-color: #fff; /* Dunkler Hintergrund */
     padding: 20px;
     display: inline-block;
-    color: #fff; /* Weiße Schrift */
+    color: #333; /* Weiße Schrift */
     border-radius: 8px;
     width: 300px;
+    border: 2px solid #333;
 }
 
 .contact-form label {
     display: block;
     margin-bottom: 5px;
     font-weight: bold;
+    
 }
 
 .contact-form input, .contact-form textarea {
@@ -121,17 +127,18 @@ body {
     height: 50px;
     padding: 10px;
     margin-bottom: 15px;
-    border: none;
+    border: 1px solid #ccc;
     border-radius: 5px;
     resize: vertical;
-    background-color: #555; /* Leichtes Grau für Eingabefelder */
-    color: #fff; /* Weiße Schrift in Eingabefeldern */
+    background-color: #fff; /* Leichtes Grau für Eingabefelder */
+    color: #333; 
+    font-family: Arial, sans-serif;
 }
 
 .contact-form button {
     width: 100%;
     padding: 10px;
-    background-color: #000; /* Schwarzer Hintergrund */
+    background-color: #333; /* Schwarzer Hintergrund */
     color: #fff; /* Weiße Schrift */
     border: none;
     border-radius: 5px;
@@ -178,11 +185,12 @@ body {
     font-size: 2em;
     margin-bottom: 20px;
     font-weight: bold;
-    color: #000; /* Schriftfarbe schwarz */
+    color: #333; /* Schriftfarbe schwarz */
+    
 }
 .main-content P {
     font-size: 1.1em;
-    color: #666; /* Optional: Grau für dezente Schriftfarbe */
+    color: #555; /* Optional: Grau für dezente Schriftfarbe */
     margin-bottom: 20px;
     line-height: 1.6;
 }
@@ -191,11 +199,16 @@ body {
 .input-group {
     display: flex;
     align-items: center;
+    
+    
 }
 
 .input-group input {
     flex: 1;
     margin-right: 10px;
+    border: 1px solid #ccc;
+    
+    
 }
 
 .edit-btn {
@@ -203,14 +216,15 @@ body {
     border: none;
     cursor: pointer;
     font-size: 1em;
+    
 }
 
 .edit-btn i {
-    color: #555; /* Farbe des Icons */
+    color: #333; /* Farbe des Icons */
 }
 
 .edit-btn i:hover {
-    color: #007BFF; /* Farbe des Icons beim Hover */
+    color: #555; /* Farbe des Icons beim Hover */
 }
 
 /* Allgemeine Einstellungen */
@@ -792,6 +806,7 @@ body {
     padding: 20px;
     background-color: #fff;
     border-radius: 8px;
+    border: 2px solid;
 }
 
 .checkout-container form {
