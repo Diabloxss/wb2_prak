@@ -1986,6 +1986,80 @@ footer a:hover {
     background-color: #b57d21;
 }
 
+/* datenschutz*/
+
+
+.content-datencontainer {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.content-datencontainer h1 {
+    font-size: 2.5em;
+    text-align: center;
+    color: #d29000;
+    margin-bottom: 20px;
+}
+
+.datenschutz-text p {
+    font-size: 1em;
+    line-height: 1.6;
+    color: #333;
+    margin: 10px 0;
+}
+
+.datenschutz-text strong {
+    color: #333;
+}
+
+.datenschutz-text a {
+    color: #d29000;
+    text-decoration: none;
+}
+
+.datenschutz-text a:hover {
+    text-decoration: underline;
+}
+
+/* Impressum*/
+.content-impressumcontainer {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.content-impressumcontainer h1 {
+    font-size: 2.5em;
+    text-align: center;
+    color: #d29000;
+    margin-bottom: 20px;
+}
+.impressum-text p {
+    font-size: 1em;
+    line-height: 1.6;
+    color: #333;
+}
+
+.impressum-text strong {
+    color: #333;
+}
+
+.impressum-text a {
+    color: #d29000;
+    text-decoration: none;
+}
+
+.impressum-text a:hover {
+    text-decoration: underline;
+}
+
 
 
 
