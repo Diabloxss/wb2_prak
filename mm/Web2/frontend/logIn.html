@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitTime - Login</title>
+    <link rel="stylesheet" href="css/style.css"> 
+</head>
+<body>
+
+    <!-- Header -->
+    <div class="header">
+        <h1>FitTime</h1>
+    </div>
+
+    <!-- Navigation -->
+    <div class="navbar">
+        <a href="index.html">Home</a>
+        <a href="über_Uns.html">Über Uns</a>
+        <a href="shop.html">Shop</a>
+        <a href="kontakt.html">Kontakt</a>
+        <a href="profilseite.html" class="button">Profil</a>
+        <a href="warenkorb.html" class="cart-icon">
+            <i class="fas fa-shopping-cart"></i> 
+            <span>0,00€</span>
+        </a>
+    </div>
+
+    <!-- Zurück-Button -->
+    <div class="back-button-container">
+        <a href="checkout.html" class="back-btn">← Zurück</a>
+    </div>
+
+    <!-- Login Formular -->
+    <div class="form-container">
+        <h2>Login</h2>
+        <form id="login-form">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+    
+            <label for="password">Passwort</label>
+            <input type="password" id="password" name="password" required>
+    
+            <button type="button" onclick="loginUser()">Anmelden</button>
+            <a href="Passwort_vergessen.html" class="forgot-password">Passwort vergessen?</a>
+            <p>Noch kein Konto? <a href="registrieren.html">Jetzt registrieren</a></p>
+        </form>
+    </div>
+    
+    <!-- Footer -->
+    <div class="footer">
+        <a href="impressum.html">Impressum</a>
+        <a href="datenschutz.html">Datenschutz</a>
+        <a href="agb.html">AGB</a>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        async function loginUser() {
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            // Senden der Anmeldedaten an das Backend
+            const response = await fetch('http://localhost:3000/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ email, password }),
+            });
+
+            if (response.ok) {
+                alert('Login erfolgreich!');
+                window.location.href = 'profilseite.html';
+            } else {
+                alert('Fehler bei der Anmeldung');
+            }
+        }
+    </script>
+    
+</body>
+</html>
