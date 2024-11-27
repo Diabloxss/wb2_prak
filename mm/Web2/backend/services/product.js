@@ -5,6 +5,7 @@ var serviceRouter = express.Router();
 
 console.log('- Service Produkt');
 
+// Fetch a single product by ID
 serviceRouter.get('/products/gib/:id', function(request, response) {
     console.log('Service Produkt: Client requested one record, id=' + request.params.id);
 
@@ -33,7 +34,7 @@ serviceRouter.get('/products/alle', function(request, response) {
     }
 });
 
-
+// Fetch products with filters
 
 serviceRouter.get('/products', function (request, response) {
     console.log('Service Produkt: Client requested all records with filters');
@@ -68,7 +69,7 @@ serviceRouter.get('/products', function (request, response) {
 });
 
 
-
+// Check if a product exists by ID
 serviceRouter.get('/products/existiert/:id', function(request, response) {
     console.log('Service Produkt: Client requested check, if record exists, id=' + request.params.id);
 
@@ -83,27 +84,17 @@ serviceRouter.get('/products/existiert/:id', function(request, response) {
     }
 });
 
+// Create a new product
 serviceRouter.post('/products', function(request, response) {
     console.log('Service Produkt: Client requested creation of new record');
 
-    var errorMsgs=[];
-    if (helper.isUndefined(request.body.description)) 
-        errorMsgs.push('bezeichnung fehlt');
-    if (helper.isUndefined(request.body.description)) 
-        request.body.description = '';
-    if (helper.isUndefined(request.body.price)) 
-        errorMsgs.push('preis fehlt');
-    if (!helper.isNumeric(request.body.price)) 
-        errorMsgs.push('preis muss eine Zahl sein');
-    if (helper.isUndefined(request.body.name)) {
-        errorMsgs.push('kategorie fehlt');
-    } else if (helper.isUndefined(request.body.name.id)) {
-        errorMsgs.push('kategorie gesetzt, aber id fehlt');
-    }             
+    const errorMsgs = [];
+    if (helper.isUndefined(request.body.name)) errorMsgs.push('Name fehlt');
+    if (helper.isUndefined(request.body.description)) request.body.description = '';
+    if (helper.isUndefined(request.body.price)) errorMsgs.push('Preis fehlt');
+    if (!helper.isNumeric(request.body.price)) errorMsgs.push('Preis muss eine Zahl sein');
+    if (helper.isUndefined(request.body.image_url)) request.body.image_url = '';
 
-    if (helper.isUndefined(request.body.image_url)) 
-        request.body.image_url = [];
-    
     if (errorMsgs.length > 0) {
         console.log('Service Produkt: Creation not possible, data missing');
         response.status(400).json({ 'fehler': true, 'nachricht': 'Funktion nicht möglich. Fehlende Daten: ' + helper.concatArray(errorMsgs) });
@@ -112,15 +103,16 @@ serviceRouter.post('/products', function(request, response) {
 
     const produktDao = new ProduktDao(request.app.locals.dbConnection);
     try {
-        var obj = produktDao.create(request.body.name, request.body.name.id,  request.body.description, request.body.price, request.body.image_url );
+        var obj = produktDao.create(request.body.name, request.body.description, request.body.price, request.body.image_url);
         console.log('Service Produkt: Record inserted');
         response.status(200).json(obj);
     } catch (ex) {
-        console.error('Service Produkt: Error creating new record. Exception occured: ' + ex.message);
+        console.error('Service Produkt: Error creating new record. Exception occurred: ' + ex.message);
         response.status(400).json({ 'fehler': true, 'nachricht': ex.message });
     }
 });
 
+// Delete a product by ID
 serviceRouter.delete('/products/:id', function(request, response) {
     console.log('Service Produkt: Client requested deletion of record, id=' + request.params.id);
 
@@ -128,10 +120,10 @@ serviceRouter.delete('/products/:id', function(request, response) {
     try {
         var obj = produktDao.loadById(request.params.id);
         produktDao.delete(request.params.id);
-        console.log('Service Produkt: Deletion of record successfull, id=' + request.params.id);
+        console.log('Service Produkt: Deletion of record successful, id=' + request.params.id);
         response.status(200).json({ 'gelöscht': true, 'eintrag': obj });
     } catch (ex) {
-        console.error('Service Produkt: Error deleting record. Exception occured: ' + ex.message);
+        console.error('Service Produkt: Error deleting record. Exception occurred: ' + ex.message);
         response.status(400).json({ 'fehler': true, 'nachricht': ex.message });
     }
 });

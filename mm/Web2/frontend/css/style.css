@@ -1135,14 +1135,18 @@ body {
 
 /* Produktkarte */
 .product-card {
-    width: 200px; /* Adjust the width of the product card */
-    text-align: center; /* Centers text inside the card */
-    border: 1px solid #ddd; /* Optional border for clarity */
-    padding: 10px; /* Add padding around content */
-    margin: 10px; /* Add margin between cards */
-    border-radius: 8px; /* Optional rounded corners */
-    background-color: #fff; /* Optional background for contrast */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional shadow for depth */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    padding: 15px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    height: 400px; /* Fixed height for uniformity */
+    box-sizing: border-box;
+    overflow: hidden; /* Prevent overflow from disrupting layout */
 }
 
 .product-card img {
@@ -1155,9 +1159,17 @@ body {
 
 
 .product-card p {
+    flex-grow: 1;
     margin: 5px 0;
     font-size: 1em;
     text-align: center;
+    height: 60px; /* Restrict height for uniformity */
+    overflow: hidden; /* Hide overflowing text */
+    text-overflow: ellipsis; /* Add "..." for overflowing text */
+    white-space: normal; /* Allow wrapping of text */
+    display: -webkit-box; /* Ensure truncation works */
+    -webkit-line-clamp: 3; /* Limit to 3 lines */
+    -webkit-box-orient: vertical;
 }
 
 .price {
