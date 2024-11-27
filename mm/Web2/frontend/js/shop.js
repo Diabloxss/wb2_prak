@@ -24,7 +24,12 @@ document.addEventListener("DOMContentLoaded", () => {
     // Render products dynamically
     const renderProducts = (products) => {
         productGrid.innerHTML = ""; // Clear previous content
-
+    
+        if (products.length === 0) {
+            productGrid.innerHTML = "<p>Keine Produkte gefunden.</p>";
+            return;
+        }
+    
         products.forEach(product => {
             productGrid.innerHTML += `
                 <div class="product-card">
@@ -37,17 +42,21 @@ document.addEventListener("DOMContentLoaded", () => {
             `;
         });
     };
+    
 
     // Event Listeners for search and filters
     searchButton.addEventListener("click", () => {
         const searchValue = searchInput.value;
         const priceValue = priceRange.value;
+        console.log("Search Value:", searchValue, "Price Value:", priceValue); // Debug
         fetchProducts(0, priceValue, searchValue);
     });
 
     priceRange.addEventListener("input", () => {
         const priceValue = priceRange.value;
         document.getElementById("price-range-value").textContent = `0-${priceValue}€`;
+            // Trigger fetch with updated price range
+        fetchProducts(0, priceValue, searchInput.value);
     });
 
     // Initial fetch
