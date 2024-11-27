@@ -7,7 +7,8 @@ document.addEventListener("DOMContentLoaded", () => {
     // Fetch products from server
     const fetchProducts = async (minPrice, maxPrice, search) => {
         try {
-            const response = await fetch(`/api/products?minPrice=${minPrice}&maxPrice=${maxPrice}&search=${search}`);
+            const response = await fetch(`http://127.0.0.1:8000/api/products?minPrice=${minPrice}&maxPrice=${maxPrice}&search=${search}`);
+
             if (!response.ok) {
                 throw new Error(`HTTP error! Status: ${response.status}`);
             }
@@ -15,15 +16,15 @@ document.addEventListener("DOMContentLoaded", () => {
             console.log("Products to render:", products);
             renderProducts(products);
         } catch (error) {
-            console.error("Error fetching products:", error);
-        
+            console.error("Error fetching products", error);
+        }
     };
+    
 
     // Render products dynamically
     const renderProducts = (products) => {
-        const productGrid = document.getElementById("product-grid");
         productGrid.innerHTML = ""; // Clear previous content
-    
+
         products.forEach(product => {
             productGrid.innerHTML += `
                 <div class="product-card">
@@ -39,16 +40,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Event Listeners for search and filters
     searchButton.addEventListener("click", () => {
-        fetchProducts(0, priceRange.value, searchInput.value);
+        const searchValue = searchInput.value;
+        const priceValue = priceRange.value;
+        fetchProducts(0, priceValue, searchValue);
     });
 
     priceRange.addEventListener("input", () => {
-        document.getElementById("price-range-value").textContent = `0-${priceRange.value}€`;
+        const priceValue = priceRange.value;
+        document.getElementById("price-range-value").textContent = `0-${priceValue}€`;
     });
 
     // Initial fetch
     fetchProducts(0, 100, "");
-});
+}); // Close the DOMContentLoaded function here
 
 // Add to cart (stub)
 function addToCart(productId) {

@@ -1,12 +1,26 @@
+
+
+/////////////////////
+// TESTED ON NodeJS 22.11.0 
+/////////////////////
+
+
 const express = require("express");
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const Database = require("better-sqlite3");
 const path = require("path");
 const produktDao = require("./dao/produktDao.js");
+const cors = require("cors");
+
+
+
 
 const app = express();
 const PORT = 8000;
+
+
+app.use(cors());
 
 // Database connection
 const db = new Database("./db/db.sqlite", { verbose: console.log });
@@ -21,21 +35,17 @@ app.use(express.static(path.join(__dirname, "public")));
 app.get("/api/products", (req, res) => {
     const minPrice = parseFloat(req.query.minPrice) || 0;
     const maxPrice = parseFloat(req.query.maxPrice) || 1000;
-    const search = req.query.search || '';
+    const search = req.query.search || "";
 
-    console.log("Query executed:", { minPrice, maxPrice, search }); 
-    
     const products = db.prepare(`
         SELECT * FROM products
         WHERE price BETWEEN ? AND ?
         AND name LIKE ?
     `).all(minPrice, maxPrice, `%${search}%`);
-    //console.log("Query executed:", { minPrice, maxPrice, search });
-    //console.log("Products fetched:", products);
 
-    
     res.json(products);
 });
+
 
 // Serve Shop Page
 app.get("/shop", (req, res) => {
