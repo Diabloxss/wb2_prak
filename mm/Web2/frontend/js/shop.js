@@ -1,8 +1,12 @@
+let products = []; 
+
 document.addEventListener("DOMContentLoaded", () => {
     const productGrid = document.getElementById("product-grid");
     const searchInput = document.getElementById("search-bar");
     const priceRange = document.getElementById("price-range");
     const searchButton = document.getElementById("search-button");
+
+    
 
     // Fetch products from server
     const fetchProducts = async (minPrice, maxPrice, search) => {
@@ -12,7 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if (!response.ok) {
                 throw new Error(`HTTP error! Status: ${response.status}`);
             }
-            const products = await response.json();
+            products = await response.json();
             console.log("Products to render:", products);
             renderProducts(products);
         } catch (error) {
@@ -61,9 +65,65 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Initial fetch
     fetchProducts(0, 100, "");
-}); // Close the DOMContentLoaded function here
 
-// Add to cart (stub)
+    updateCartTotalPrice()
+}); 
+
+
+
 function addToCart(productId) {
-    alert(`Produkt mit ID ${productId} wurde in den Warenkorb gelegt.`);
+    console.log(`Adding product to cart with ID: ${productId}`);
+
+    // Load the current cart from localStorage
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    // Find the product details in the global `products` array
+    const product = products.find(p => p.id === productId);
+
+    if (!product) {
+        console.error("Produkt konnte nicht gefunden werden.");
+        return;
+    }
+
+    // Check if the product is already in the cart
+    const existingProduct = cart.find(item => item.id === productId);
+
+    if (existingProduct) {
+        // Increment the quantity if the product exists
+        existingProduct.quantity += 1;
+    } else {
+        // Add the product to the cart
+        cart.push({
+            id: product.id,
+            name: product.name,
+            price: product.price,
+            quantity: 1,
+        });
+    }
+
+    // Save the updated cart back to localStorage
+    localStorage.setItem("cart", JSON.stringify(cart));
+
+    // Update the cart total price in the navigation bar
+    updateCartTotalPrice();
+
+    console.log(`${product.name} wurde erfolgreich in den Warenkorb gelegt.`);
 }
+
+
+
+
+
+    // Update the total price in the navigation bar
+const updateCartTotalPrice = () => {
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+    const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+
+    const cartTotalElement = document.getElementById("cart-total");
+    if (cartTotalElement) {
+        cartTotalElement.textContent = `${total.toFixed(2)}€`;
+    }
+};
+
+
+

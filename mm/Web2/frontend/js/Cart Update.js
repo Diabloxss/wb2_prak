@@ -1,90 +1,156 @@
-// common.js - Gemeinsame Funktionen für dynamische Aktualisierung des Warenkorbs
+// Constants
+const TAX_RATE = 0.19; // 19% VAT
 
-// Diese Funktion aktualisiert die Warenkorb-Summe dynamisch auf allen Seiten
+// Fetch product details by ID dynamically
+async function getProductById(productId) {
+    try {
+        const response = await fetch(`http://localhost:8000/api/products/gib/${productId}`);
+        if (!response.ok) {
+            throw new Error(`Failed to fetch product with ID ${productId}`);
+        }
+        const product = await response.json();
+        return product;
+    } catch (error) {
+        console.error('Error fetching product details:', error);
+        return null;
+    }
+}
+
+// Load cart from localStorage
+function loadCart() {
+    const storedCart = localStorage.getItem('cart');
+    return storedCart ? JSON.parse(storedCart) : [];
+}
+
+// Update the total cart price
 async function updateCartTotal() {
     try {
-        const response = await fetch('http://localhost:3000/cart');
-        if (!response.ok) {
-            throw new Error('Fehler beim Abrufen des Warenkorbs');
-        }
-        const cart = await response.json();
+        const cart = loadCart();
         let total = 0;
 
-        // Berechnen der Gesamtsumme basierend auf den Produktpreisen und Mengen
-        cart.forEach(item => {
-            const product = getProductById(item.productId);
+        for (const item of cart) {
+            const product = await getProductById(item.id);
             if (product) {
                 total += product.price * item.quantity;
             }
-        });
+        }
 
-        // Die Gesamtsumme im Navigationsmenü aktualisieren
         const cartTotalElement = document.getElementById('cart-total');
         if (cartTotalElement) {
             cartTotalElement.innerText = `${total.toFixed(2)}€`;
         }
     } catch (error) {
-        console.error('Es gab ein Problem beim Aktualisieren der Warenkorb-Summe:', error);
+        console.error('Error updating cart total:', error);
     }
 }
 
-// Diese Funktion holt Produktinformationen anhand der ID
-function getProductById(productId) {
-    // Produkte müssen für die Berechnung bekannt sein
-    const products = [
-        { id: 1, name: 'Chocolate Whey Protein', price: 29.99 },
-        { id: 2, name: 'Strawberry Whey Protein', price: 39.99 },
-        { id: 3, name: 'Vanilla Protein Shake', price: 44.99 },
-        { id: 4, name: 'Vanilla Whey Protein', price: 49.99 },
-        { id: 5, name: 'Whey Protein', price: 59.99 }
-    ];
-    return products.find(product => product.id === productId);
+// Add a product to the cart
+async function addToCart(productId, quantity = 1) {
+    try {
+        const product = await getProductById(productId);
+        if (!product) {
+            alert('Produkt konnte nicht hinzugefügt werden. Bitte versuchen Sie es erneut.');
+            return;
+        }
+
+        const cart = loadCart();
+        const existingProduct = cart.find(item => item.id === productId);
+
+        if (existingProduct) {
+            existingProduct.quantity += quantity;
+        } else {
+            cart.push({
+                id: productId,
+                name: product.name,
+                price: product.price,
+                quantity: quantity
+            });
+        }
+
+        localStorage.setItem('cart', JSON.stringify(cart));
+        alert(`${quantity}x ${product.name} wurde dem Warenkorb hinzugefügt.`);
+        updateCartTotal();
+    } catch (error) {
+        console.error('Error adding product to cart:', error);
+    }
 }
 
-// Funktion zum Aktualisieren der Menge eines Produkts auf der Produktseite
-function updateQuantity(change) {
-    const quantityInput = document.getElementById('quantity');
-    let currentQuantity = parseInt(quantityInput.value);
-    currentQuantity += change;
-
-    // Sicherstellen, dass die Menge mindestens 1 bleibt
-    if (currentQuantity < 1) {
-        currentQuantity = 1;
-    }
-    quantityInput.value = currentQuantity;
-
-    // Optional: Preis dynamisch aktualisieren
+// Remove a product from the cart
+function removeFromCart(productId) {
+    let cart = loadCart();
+    cart = cart.filter(item => item.id !== productId);
+    localStorage.setItem('cart', JSON.stringify(cart));
     updateCartTotal();
 }
 
-// Funktion zum Hinzufügen eines Produkts zum Warenkorb
-async function addToCart() {
-    try {
-        const productId = 2; // Beispiel-ID für "Strawberry Whey Protein"
-        const quantity = parseInt(document.getElementById('quantity').value);
-        
-        const response = await fetch('http://localhost:3000/cart', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ productId, quantity }),
-        });
+// Adjust the quantity of a product in the cart
+async function updateQuantity(productId, change) {
+    const cart = loadCart();
+    const product = cart.find(item => item.id === productId);
 
-        if (!response.ok) {
-            throw new Error('Fehler beim Hinzufügen zum Warenkorb');
+    if (product) {
+        product.quantity += change;
+
+        if (product.quantity <= 0) {
+            removeFromCart(productId);
+            return;
         }
 
-        console.log("Produkt wurde erfolgreich zum Warenkorb hinzugefügt.");
-        
-        // Warenkorb-Summe aktualisieren, nachdem ein Produkt hinzugefügt wurde
+        localStorage.setItem('cart', JSON.stringify(cart));
         updateCartTotal();
-    } catch (error) {
-        console.error('Es gab ein Problem beim Hinzufügen zum Warenkorb:', error);
     }
 }
 
-// Automatische Initialisierung beim Laden der Seite
+// Render the cart dynamically
+async function renderCart() {
+    const cartContainer = document.getElementById("cart-container");
+    const cart = loadCart();
+    cartContainer.innerHTML = ""; // Clear previous content
+
+    if (cart.length === 0) {
+        cartContainer.innerHTML = "<p>Ihr Warenkorb ist leer.</p>";
+        return;
+    }
+
+    let total = 0;
+
+    for (const item of cart) {
+        const product = await getProductById(item.id);
+        if (!product) continue;
+
+        const itemTotal = product.price * item.quantity;
+        total += itemTotal;
+
+        const cartItem = document.createElement("div");
+        cartItem.classList.add("cart-item");
+
+        cartItem.innerHTML = `
+            <div class="cart-item-details">
+                <h3>${product.name}</h3>
+                <p>Preis: ${product.price.toFixed(2)}€</p>
+                <p>Menge: 
+                    <button class="quantity-btn" onclick="updateQuantity(${item.id}, -1)">-</button>
+                    ${item.quantity}
+                    <button class="quantity-btn" onclick="updateQuantity(${item.id}, 1)">+</button>
+                </p>
+                <p>Gesamt: ${itemTotal.toFixed(2)}€</p>
+            </div>
+            <button class="remove-btn" onclick="removeFromCart(${item.id})">Entfernen</button>
+        `;
+
+        cartContainer.appendChild(cartItem);
+    }
+
+    const totalPriceElement = document.getElementById("total-price");
+    const taxAmountElement = document.getElementById("tax-amount");
+
+    const taxAmount = total * TAX_RATE;
+    totalPriceElement.textContent = `Gesamt: ${total.toFixed(2)}€`;
+    taxAmountElement.textContent = `Enthaltene MwSt.: ${taxAmount.toFixed(2)}€`;
+}
+
+// Initialize cart on page load
 document.addEventListener('DOMContentLoaded', () => {
-    updateCartTotal(); // Aktualisiert den Warenkorb bei Seitenladeereignis
+    updateCartTotal();
+    renderCart();
 });

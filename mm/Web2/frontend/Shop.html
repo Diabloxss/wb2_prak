@@ -7,17 +7,16 @@
     <link rel="icon" href="images/favicon.PNG" type="image/png">
     <link rel="stylesheet" href="css/style.css"> 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="js/shop.js"></script>
+    <script src="js/shop.js" defer></script> 
 </head>
 <body>
     <!-- Header -->
-    <div class="header">
+    <header class="header">
         <h1>FitTime</h1>
-    </div>
+    </header>
 
     <!-- Navigation -->
-    <div class="navbar">
+    <nav class="navbar">
         <a href="index.html">Home</a>
         <a href="über_Uns.html">Über Uns</a>
         <a href="shop.html" class="button">Shop</a>
@@ -27,66 +26,34 @@
             <i class="fas fa-shopping-cart"></i> 
             <span id="cart-total">0,00€</span>
         </a>
-    </div>
+    </nav>
 
     <!-- Filter und Suche -->
-    <div class="filter-search">
+    <section class="filter-search">
         <div class="price-filter">
             <label for="price-range">Preis:</label>
             <input type="range" id="price-range" min="0" max="100" value="100">
             <span id="price-range-value">0-100€</span> <!-- Dynamic range will be updated -->
         </div>
         <div class="search-bar">
+            <label for="search-bar" class="visually-hidden">Suche:</label>
             <input type="text" id="search-bar" placeholder="Suche">
             <button id="search-button"><i class="fas fa-search"></i></button>
         </div>
-    </div>
+    </section>
 
     <!-- Shop-Bereich -->
-    <div class="shop-container">
+    <main class="shop-container">
         <div class="product-grid" id="product-grid">
             <!-- Dynamically loaded products will appear here -->
         </div>
-    </div>
+    </main>
 
     <!-- Footer -->
-    <div class="footer">
+    <footer class="footer">
         <a href="impressum.html">Impressum</a>
         <a href="datenschutz.html">Datenschutz</a>
         <a href="agb.html">AGB</a>
-    </div>
-
-    <script>
-       $.ajax({
-        url: 'http://localhost:8000/api/products/alle', 
-        method: 'GET',
-        contentType: 'application/json; charset=utf-8',
-        cache: false,
-        dataType: 'json'
-    })
-    .done(function(response) {
-        console.log(response);
-        const productGrid = $('#product-grid');
-        productGrid.empty();
-        response.forEach(product => {
-            productGrid.append(`
-                <div class="product-card">
-                    <img src="${product.image_url}" alt="${product.name}">
-                    <h3>${product.name}</h3>
-                    <p>${product.description}</p>
-                    <p>${product.price.toFixed(2)}€</p>
-                    <button onclick="addToCart(${product.id})">In den Warenkorb</button>
-                </div>
-            `);
-        });
-    })
-    .fail(function(jqXHR, statusText, error) {
-        console.log('Response Code: ' + jqXHR.status + ' - Fehlermeldung: ' + jqXHR.responseText);
-        alert('Ein Fehler ist aufgetreten');
-    });
-
-    </script>
-    
-    
+    </footer>
 </body>
 </html>

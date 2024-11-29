@@ -1130,14 +1130,18 @@ body {
 .product-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 20px;
+    gap: 20px; /* Space between cards */
+    padding: 20px; /* Add padding around the grid */
+    max-width: 1200px; /* Limit the maximum width */
+    margin: 0 auto; /* Center the grid container */
 }
+
 
 /* Produktkarte */
 .product-card {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-between; /* Ensures proper spacing between elements */
     align-items: center;
     text-align: center;
     padding: 15px;
@@ -1146,15 +1150,19 @@ body {
     border-radius: 8px;
     height: 400px; /* Fixed height for uniformity */
     box-sizing: border-box;
-    overflow: hidden; /* Prevent overflow from disrupting layout */
+    overflow: hidden; /* Prevent overflow */
+    gap: 10px; /* Add spacing between elements */
 }
 
+
 .product-card img {
-    max-width: 100%; /* Constrains image width to the container */
-    height: auto; /* Maintains aspect ratio */
-    display: block; /* Ensures proper alignment */
-    margin: 0 auto; /* Centers the image */
+    max-width: 100%; /* Constrain the width to the container */
+    height: 150px; /* Fixed height for uniformity */
+    object-fit: contain; /* Ensures images fit within their container */
+    display: block; /* Prevents alignment issues */
+    margin: 0 auto; /* Centers the image horizontally */
 }
+
 
 
 
@@ -1163,14 +1171,16 @@ body {
     margin: 5px 0;
     font-size: 1em;
     text-align: center;
-    height: 60px; /* Restrict height for uniformity */
+    height: 60px; /* Fixed height for description */
     overflow: hidden; /* Hide overflowing text */
     text-overflow: ellipsis; /* Add "..." for overflowing text */
-    white-space: normal; /* Allow wrapping of text */
-    display: -webkit-box; /* Ensure truncation works */
+    white-space: normal; /* Allow text to wrap */
+    display: -webkit-box; /* For modern truncation */
     -webkit-line-clamp: 3; /* Limit to 3 lines */
     -webkit-box-orient: vertical;
+    line-height: 1.2em; /* Adjust spacing between lines */
 }
+
 
 .price {
     font-weight: bold;
