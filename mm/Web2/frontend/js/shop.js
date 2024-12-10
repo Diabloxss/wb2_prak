@@ -40,11 +40,13 @@ document.addEventListener("DOMContentLoaded", () => {
                     <img src="${product.image_url}" alt="${product.name}">
                     <h3>${product.name}</h3>
                     <p>${product.description}</p>
-                    <p>${product.price.toFixed(2)}€</p>
-                    <button onclick="addToCart(${product.id})">In den Warenkorb</button>
+                    <p>${product.price.toLocaleString('de-DE', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}€</p>
+                    <button class="detail-btn" onclick="window.location.href='Produktseite.html'">Details</button>
+                    <button class="add-btn" onclick="addToCart(${product.id})">hinzufügen</button>
                 </div>
             `;
         });
+        
     };
     
 
@@ -121,8 +123,10 @@ const updateCartTotalPrice = () => {
 
     const cartTotalElement = document.getElementById("cart-total");
     if (cartTotalElement) {
-        cartTotalElement.textContent = `${total.toFixed(2)}€`;
+        cartTotalElement.textContent = `${total.toLocaleString('de-DE', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}€`;
     }
+
+    
 };
 
 

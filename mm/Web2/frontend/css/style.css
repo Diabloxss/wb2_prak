@@ -1175,10 +1175,14 @@ body {
     overflow: hidden; /* Hide overflowing text */
     text-overflow: ellipsis; /* Add "..." for overflowing text */
     white-space: normal; /* Allow text to wrap */
-    display: -webkit-box; /* For modern truncation */
-    -webkit-line-clamp: 3; /* Limit to 3 lines */
+    display: -webkit-box; /* Für Webkit-basierte Browser */
+    display: box; /* Standard Eigenschaft */
+    -webkit-line-clamp: 3; /* Begrenzung auf 3 Zeilen für Webkit-Browser */
+    line-clamp: 3; /* Standard Eigenschaft */
     -webkit-box-orient: vertical;
-    line-height: 1.2em; /* Adjust spacing between lines */
+    box-orient: vertical; /* Standard Eigenschaft */
+    line-height: 1.2em; /* Abstandsregelung */
+    
 }
 
 
@@ -1189,19 +1193,39 @@ body {
 
 .add-btn {
     margin-top: 10px;
-    padding: 10px;
-    background-color: #000;
-    color: #fff;
+    padding: 10px 20px;
+    background-color: #d69e2e;
+    color: white;
     border: none;
     border-radius: 5px;
     font-size: 1em;
+    font-weight: bold;
     cursor: pointer;
     text-align: center;
+    transition: background-color 0.3s ease;
 }
 
 .add-btn:hover {
-    background-color: #333;
+    background-color: #b57d21;
 }
+
+.detail-btn {
+    padding: 10px 20px;
+    background-color: #ddd;
+    color: #333;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    font-weight: bold;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+
+.detail-btn:hover {
+    background-color: #bbb;
+}
+
 
 /* Banner-Bereich */
 .banner-container {

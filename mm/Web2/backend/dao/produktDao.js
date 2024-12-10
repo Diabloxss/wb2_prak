@@ -40,6 +40,24 @@ class ProduktDao {
 
         return result;
     }
+    
+    loadFiltered(minPrice = 0, maxPrice = Infinity, search = '') {
+        let sql = 'SELECT * FROM products WHERE price >= ? AND price <= ?';
+        const params = [minPrice, maxPrice];
+
+        if (search) {
+            sql += ' AND (name LIKE ? OR description LIKE ?)';
+            params.push(`%${search}%`, `%${search}%`);
+        }
+
+        const statement = this._conn.prepare(sql);
+        const result = statement.all(params);
+
+        if (helper.isArrayEmpty(result)) 
+            return [];
+
+        return result;
+    }
 
     exists(id) {
         var sql = 'SELECT COUNT(id) AS cnt FROM products WHERE id=?';
@@ -95,24 +113,3 @@ class ProduktDao {
 }
 
 module.exports = ProduktDao;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

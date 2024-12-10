@@ -37,36 +37,27 @@ serviceRouter.get('/products/alle', function(request, response) {
 // Fetch products with filters
 
 serviceRouter.get('/products', function (request, response) {
-    console.log('Service Produkt: Client requested all records with filters');
+    console.log('Service Produkt: Client requested filtered records');
 
     const produktDao = new ProduktDao(request.app.locals.dbConnection);
+
     try {
         // Parse query parameters
         const minPrice = parseFloat(request.query.minPrice) || 0;
         const maxPrice = parseFloat(request.query.maxPrice) || Infinity;
         const search = request.query.search || '';
 
-        let products = produktDao.loadAll();
+        // Fetch filtered products from the database
+        const products = produktDao.loadFiltered(minPrice, maxPrice, search);
 
-        // Filter products by price range
-        products = products.filter(product => product.price >= minPrice && product.price <= maxPrice);
-
-        // Filter products by search term (case insensitive)
-        if (search) {
-            const searchLower = search.toLowerCase();
-            products = products.filter(product =>
-                product.name.toLowerCase().includes(searchLower) ||
-                product.description.toLowerCase().includes(searchLower)
-            );
-        }
-
-        console.log('Service Produkt: Records loaded with filters, count=' + products.length);
+        console.log('Service Produkt: Filtered records loaded, count=' + products.length);
         response.status(200).json(products);
     } catch (ex) {
-        console.error('Service Produkt: Error loading records. Exception occurred: ' + ex.message);
+        console.error('Service Produkt: Error loading filtered records. Exception occurred: ' + ex.message);
         response.status(400).json({ 'fehler': true, 'nachricht': ex.message });
     }
 });
+
 
 
 // Check if a product exists by ID
@@ -111,6 +102,42 @@ serviceRouter.post('/products', function(request, response) {
         response.status(400).json({ 'fehler': true, 'nachricht': ex.message });
     }
 });
+
+// Update
+serviceRouter.put('/products/:id', function (request, response) {
+    console.log('Service Produkt: Client requested update of record, id=' + request.params.id);
+
+    const errorMsgs = [];
+    if (helper.isUndefined(request.params.id)) errorMsgs.push('ID fehlt');
+    if (helper.isUndefined(request.body.name)) errorMsgs.push('Name fehlt');
+    if (helper.isUndefined(request.body.description)) request.body.description = '';
+    if (helper.isUndefined(request.body.price)) errorMsgs.push('Preis fehlt');
+    if (!helper.isNumeric(request.body.price)) errorMsgs.push('Preis muss eine Zahl sein');
+    if (helper.isUndefined(request.body.image_url)) request.body.image_url = '';
+
+    if (errorMsgs.length > 0) {
+        console.log('Service Produkt: Update not possible, data missing');
+        response.status(400).json({ 'fehler': true, 'nachricht': 'Funktion nicht möglich. Fehlende Daten: ' + helper.concatArray(errorMsgs) });
+        return;
+    }
+
+    const produktDao = new ProduktDao(request.app.locals.dbConnection);
+    try {
+        var obj = produktDao.update(
+            request.params.id,
+            request.body.name,
+            request.body.description,
+            request.body.price,
+            request.body.image_url
+        );
+        console.log('Service Produkt: Record updated, id=' + request.params.id);
+        response.status(200).json(obj);
+    } catch (ex) {
+        console.error('Service Produkt: Error updating record. Exception occurred: ' + ex.message);
+        response.status(400).json({ 'fehler': true, 'nachricht': ex.message });
+    }
+});
+
 
 // Delete a product by ID
 serviceRouter.delete('/products/:id', function(request, response) {
