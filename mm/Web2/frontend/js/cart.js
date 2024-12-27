@@ -1,107 +1,113 @@
 document.addEventListener("DOMContentLoaded", () => {
+    updateCartTotalPrice();
+    renderCart();
+    
+
+    // Add event listener to the cart container once
     const cartContainer = document.getElementById("cart-container");
-    const totalPriceElement = document.getElementById("total-price");
-    const taxAmountElement = document.getElementById("tax-amount");
-
-    const TAX_RATE = 0.19; // 19% VAT
-
-    // Load the cart from localStorage
-    const loadCart = () => {
-        return JSON.parse(localStorage.getItem("cart")) || [];
-    };
-
-    // Save the cart back to localStorage
-    const saveCart = (cart) => {
-        localStorage.setItem("cart", JSON.stringify(cart));
-    };
-
-    // Render the cart items
-    const renderCart = () => {
-        const cart = loadCart();
-        cartContainer.innerHTML = ""; // Clear previous content
-
-        if (cart.length === 0) {
-            cartContainer.innerHTML = "<p>Ihr Warenkorb ist leer.</p>";
-            totalPriceElement.textContent = "Gesamt: 0,00€";
-            taxAmountElement.textContent = "Enthaltene MwSt.: 0,00€";
-            return;
+    cartContainer.addEventListener("click", (event) => {
+        if (event.target.classList.contains("increment-btn")) {
+            const productId = parseInt(event.target.dataset.productId, 10);
+            updateQuantity(productId, 1); // Increment by 1
+        } else if (event.target.classList.contains("decrement-btn")) {
+            const productId = parseInt(event.target.dataset.productId, 10);
+            updateQuantity(productId, -1); // Decrement by 1
+        } else if (event.target.classList.contains("remove-btn")) {
+            const productId = parseInt(event.target.dataset.productId, 10);
+            removeFromCart(productId); // Remove the product
         }
+    });
+});
 
-        let total = 0;
 
-        cart.forEach(item => {
-            const itemTotal = item.price * item.quantity;
-            total += itemTotal;
+function renderCart() {
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+    const cartContainer = document.getElementById("cart-container");
+    cartContainer.innerHTML = "";
 
-            // Create cart item element
-            const cartItem = document.createElement("div");
-            cartItem.classList.add("cart-item");
+    // Define VAT rate (19%)
+    const VAT_RATE = 0.19;
 
-            cartItem.innerHTML = `
-                <div class="cart-item-details">
-                    <h3>${item.name}</h3>
-                    <p>Preis: ${item.price.toFixed(2)}€</p>
-                    <p>
-                        Menge: 
-                        <button onclick="updateQuantity(${item.id}, -1)">-</button>
-                        ${item.quantity}
-                        <button onclick="updateQuantity(${item.id}, 1)">+</button>
-                    </p>
-                    <p>Gesamt: ${itemTotal.toFixed(2)}€</p>
-                </div>
-                <button class="remove-btn" onclick="removeFromCart(${item.id})">Entfernen</button>
-            `;
-
-            cartContainer.appendChild(cartItem);
-        });
-
-        const taxAmount = total * TAX_RATE;
-        totalPriceElement.textContent = `Gesamt: ${total.toFixed(2)}€`;
-        taxAmountElement.textContent = `Enthaltene MwSt.: ${taxAmount.toFixed(2)}€`;
-    };
-
-    // Update the quantity of a product in the cart
-    const updateQuantity = (productId, change) => {
-        const cart = loadCart();
-        const product = cart.find(item => item.id === productId);
-
-        if (product) {
-            product.quantity += change;
-
-            if (product.quantity <= 0) {
-                // Remove the product if quantity drops to 0 or less
-                removeFromCart(productId);
-                return;
-            }
-
-            // Save the updated cart
-            saveCart(cart);
-            renderCart();
-        }
-    };
-
-    // Remove a product from the cart
-    const removeFromCart = (productId) => {
-        let cart = loadCart();
-        cart = cart.filter(item => item.id !== productId);
-        saveCart(cart);
-        renderCart();
-    };
-
-    // Clear the entire cart
-    const clearCart = () => {
-        if (confirm("Möchten Sie den Warenkorb wirklich leeren?")) {
-            localStorage.removeItem("cart");
-            renderCart();
-        }
-    };
-
-    // Attach clear cart button functionality
-    const clearCartButton = document.getElementById("clear-cart-button");
-    if (clearCartButton) {
-        clearCartButton.addEventListener("click", clearCart);
+    if (cart.length === 0) {
+        cartContainer.innerHTML = "<p>Der Warenkorb ist leer.</p>";
+        return;
     }
 
-    // Initial rendering of the cart
+    let total = 0;
+    let totalVAT = 0;
+
+    cart.forEach((item) => {
+        const itemTotal = item.price * item.quantity;
+        const itemVAT = itemTotal * VAT_RATE;
+
+        total += itemTotal;
+        totalVAT += itemVAT;
+
+        cartContainer.innerHTML += `
+            <div class="cart-item">
+                <!-- Product Name -->
+                <h3>${item.name}</h3>
+                <!-- Price -->
+                <p>Preis: ${item.price.toLocaleString('de-DE', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}€</p>
+                <!-- Quantity Controls -->
+                <div class="quantity-controls">
+                    <button class="decrement-btn" data-product-id="${item.id}">-</button>
+                    <span>${item.quantity}</span>
+                    <button class="increment-btn" data-product-id="${item.id}">+</button>
+                </div>
+                <!-- Total Price -->
+                <p>Gesamt: ${itemTotal.toLocaleString('de-DE', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}€</p>
+                <!-- Remove Button -->
+                <button class="remove-btn" data-product-id="${item.id}">Entfernen</button>
+            </div>
+        `;
+        updateCartTotalPrice();
+    });
+
+    // Add total summary including VAT
+    cartContainer.innerHTML += `
+        <div class="cart-total">
+            <p>Gesamtsumme: ${total.toLocaleString('de-DE', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}€</p>
+            <p>Enthaltene MwSt.: ${totalVAT.toLocaleString('de-DE', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}€</p>
+        </div>
+    `;
+}
+
+
+function updateQuantity(productId, change) {
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+    const productIndex = cart.findIndex((item) => item.id === productId);
+
+    if (productIndex !== -1) {
+        cart[productIndex].quantity += change;
+
+        if (cart[productIndex].quantity <= 0) {
+            cart.splice(productIndex, 1); // Remove product if quantity is zero
+        }
+
+        localStorage.setItem("cart", JSON.stringify(cart));
+        renderCart();
+        updateCartTotalPrice();
+    }
+}
+
+function removeFromCart(productId) {
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+    const updatedCart = cart.filter((item) => item.id !== productId);
+
+    localStorage.setItem("cart", JSON.stringify(updatedCart));
     renderCart();
-});
+    updateCartTotalPrice();
+}
+
+    // Update the total price in the navigation bar
+const updateCartTotalPrice = () => {
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+    const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+
+    const cartTotalElement = document.getElementById("cart-total");
+    if (cartTotalElement) {
+        cartTotalElement.textContent = `${total.toLocaleString('de-DE', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}€`;
+    }
+}
+

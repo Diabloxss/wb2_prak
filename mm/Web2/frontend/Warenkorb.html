@@ -4,9 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FitTime - Warenkorb</title>
+    <link rel="icon" href="images/favicon.PNG" type="image/png">
     <link rel="stylesheet" href="css/style.css"> 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <script src="js/cart.js"></script> 
+    <script src="js/cart.js"></script>
+ 
 </head>
 <body>
     <!-- Header -->
@@ -15,7 +17,7 @@
     </div>
 
     <!-- Navigation -->
-    <div class="navbar">
+    <nav class="navbar">
         <a href="index.html">Home</a>
         <a href="über_Uns.html">Über Uns</a>
         <a href="shop.html">Shop</a>
@@ -25,16 +27,11 @@
             <i class="fas fa-shopping-cart"></i> 
             <span id="cart-total">0,00€</span>
         </a>
-    </div>
+    </nav>
 
     <!-- Warenkorb Bereich -->
     <div class="cart-container" id="cart-container"></div>
 
-    <!-- Gesamtbetrag und MwSt -->
-    <div class="cart-summary">
-        <p id="total-price">Gesamt: 0,00€</p>
-        <p id="tax-amount">Enthaltene MwSt.: 0,00€</p> <!-- 19% MwSt.  -->
-    </div>
 
     <button class="checkout-btn" onclick="window.location.href='checkout.html';">Zur Kasse</button>
 
@@ -47,7 +44,7 @@
         <a href="agb.html">AGB</a>
     </div>
 
-    <script src="js/cart.js"></script>
+
     
 </body>
 </html>
