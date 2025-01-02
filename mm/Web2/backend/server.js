@@ -46,6 +46,7 @@ try {
 
     console.log('Binding middleware...');
     app.use(bodyParser.json());
+    app.use(bodyParser.urlencoded({ extended: true })); // Für Formulardaten
     app.use(cookieParser());
     app.use(express.static(path.join(__dirname, "public")));
 
@@ -65,9 +66,17 @@ try {
     const TOPLEVELPATH = '/api';
     console.log('Binding enpoints, top level Path at ' + TOPLEVELPATH);
 
+    // Product Service
     var serviceRouter = require('./services/product.js');
     app.use(TOPLEVELPATH, serviceRouter);
 
+    // Guest Service
+    var guestService = require('./services/guestsService.js');
+    app.use(TOPLEVELPATH, guestService); // Binds `/api/guests/...`
+
+    // Orders Service
+    var ordersService = require('./services/ordersService.js');
+    app.use(TOPLEVELPATH, ordersService); // Binds `/api/orders/...`
 
 
 

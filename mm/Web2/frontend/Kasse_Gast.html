@@ -7,6 +7,8 @@
     <link rel="icon" href="images/favicon.PNG" type="image/png">
     <link rel="stylesheet" href="css/style.css"> 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script defer src="js/checkout.js"></script>
+
 </head>
 <body>
 
@@ -28,7 +30,6 @@
         </a>
     </div>
 
-
         <!-- Zurück-Button -->
         <div class="back-button-container">
             <a href="Checkout.html" class="back-btn">← Zurück</a>
@@ -36,7 +37,7 @@
 
     <!-- Kassenformular -->
     <div class="checkout-container">
-        <form action="bestellbestaetigung.html" method="post">
+        <form action="http://localhost:8000/api/guests" method="post">
 
             <label for="vorname">Vorname*</label>
             <input type="text" id="vorname" name="vorname" required>
@@ -44,17 +45,17 @@
             <label for="nachname">Nachname*</label>
             <input type="text" id="nachname" name="nachname" required>
 
-            <label for="strasse">Straße & Hausnummer*</label>
-            <input type="text" id="strasse" name="strasse" required>
-
-            <label for="plz">PLZ*</label>
-            <input type="text" id="plz" name="plz" required>
-
-            <label for="ort">Ort*</label>
-            <input type="text" id="ort" name="ort" required>
-
-            <label for="email">Email*</label>
+            <label for="email">E-Mail*</label>
             <input type="email" id="email" name="email" required>
+
+            <label for="street">Straße*</label>
+            <input type="text" id="street" name="street" required>
+
+            <label for="zip_code">PLZ*</label>
+            <input type="text" id="zip_code" name="zip_code" required>
+
+            <label for="city">Stadt*</label>
+            <input type="text" id="city" name="city" required>
 
             <p class="payment-info">Aktuell ist nur die Zahlung per Rechnung möglich. Alle nötigen Zahlungsinfos erhalten Sie auf der Rechnung nach Abschluss des Kaufes.</p>
 
