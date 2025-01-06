@@ -1,5 +1,3 @@
-
-
 /////////////////////
 // TESTED ON NodeJS 22.11.0 
 /////////////////////
@@ -8,63 +6,55 @@ const fileHelper = require('./fileHelper.js');
 console.log('Starting server...');
 
 try {
-
-
     const cookieParser = require("cookie-parser");
     const path = require("path");
+    const express = require("express");
+    const cors = require("cors");
+    const bodyParser = require("body-parser");
+    const morgan = require("morgan");
+
     const produktDao = require("./dao/produktDao.js");
-
-
-
-
-
-    const PORT = 8000;
-
-
 
     // Database connection
     console.log('Connect database...');
     const Database = require("better-sqlite3");
     const dbOptions = { verbose: console.log };
-    const db = './db/db.sqlite';
-    const dbConnection = new Database(db, dbOptions);
-    
+    const dbPath = path.resolve(__dirname, './db/db.sqlite'); // Absoluter Pfad zur SQLite-Datenbank
+    const dbConnection = new Database(dbPath, dbOptions);
 
     // create server
     const HTTP_PORT = 8000;
-    const express = require("express");
-    const cors = require("cors");
-    const bodyParser = require("body-parser");
-    const morgan = require('morgan');
-
     console.log('Creating and configuring Web Server...');
     const app = express();
 
     // provide service router with database connection / store the database connection in global server environment
     app.locals.dbConnection = dbConnection;
 
+<<<<<<< HEAD
     //vmaginas
+=======
+>>>>>>> 6f13871e4e2a50aa19eab902a2dacd045dac58a1
     console.log('Binding middleware...');
-    app.use(bodyParser.json());
-    app.use(bodyParser.urlencoded({ extended: true })); // Für Formulardaten
-    app.use(cookieParser());
-    app.use(express.static(path.join(__dirname, "public")));
+    app.use(bodyParser.json()); // JSON-Daten verarbeiten
+    app.use(bodyParser.urlencoded({ extended: true })); // Formulardaten verarbeiten
+    app.use(cookieParser()); // Cookies verarbeiten
+    app.use(express.static(path.join(__dirname, "public"))); // Statische Dateien bereitstellen
 
-    app.use(cors());
+    app.use(cors()); // CORS aktivieren
 
-
-    app.use(function(request, response, next) {
+    // CORS-Header setzen
+    app.use(function (request, response, next) {
         response.setHeader('Access-Control-Allow-Origin', '*'); 
         response.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
         response.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
         next();
     });
 
-    app.use(morgan('dev'));
+    app.use(morgan('dev')); // Logging aktivieren
 
     // binding endpoints
     const TOPLEVELPATH = '/api';
-    console.log('Binding enpoints, top level Path at ' + TOPLEVELPATH);
+    console.log('Binding endpoints, top level Path at ' + TOPLEVELPATH);
 
     // Product Service
     var serviceRouter = require('./services/product.js');
@@ -78,6 +68,7 @@ try {
     var ordersService = require('./services/ordersService.js');
     app.use(TOPLEVELPATH, ordersService); // Binds `/api/orders/...`
 
+<<<<<<< HEAD
     //vmaginas
     const userController = require('./routes/userController');
     app.use('/api/users', userController);
@@ -86,17 +77,20 @@ try {
     const passwordResetRouter = require('./routes/passwordResetRouter'); // Pfad zum Router
     app.use('/api', passwordResetRouter);
 
+=======
+    // Contact Service
+    var contactService = require('./services/contactService.js');
+    app.use(TOPLEVELPATH, contactService); // Binds `/api/contact`
+>>>>>>> 6f13871e4e2a50aa19eab902a2dacd045dac58a1
 
     // send default error message if no matching endpoint found
     app.use(function (request, response) {
-        console.log('Error occured, 404, resource not found');
-        response.status(404).json({'fehler': true, 'nachricht': 'Resource nicht gefunden'});
+        console.log('Error occurred, 404, resource not found');
+        response.status(404).json({ fehler: true, nachricht: 'Resource nicht gefunden' });
     });
-
 
     // starting the Web Server
     console.log("\nBinding Port and starting Webserver...");
-        
     var webServer = app.listen(HTTP_PORT, () => {
         console.log('Listening at localhost, port ' + HTTP_PORT);
         console.log('\nUsage: http://localhost:' + HTTP_PORT + TOPLEVELPATH + "/SERVICENAME/SERVICEMETHOD/....");
@@ -106,6 +100,6 @@ try {
         console.log('-----------------------------------------\n\n');
     });
 
-    }catch (err) {
-        console.error("Error starting server:", err);
+} catch (err) {
+    console.error("Error starting server:", err);
 }
