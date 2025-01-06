@@ -1,7 +1,7 @@
 const sqlite3 = require('sqlite3').verbose();
 
 // Verbindung zur SQLite-Datenbank herstellen
-const db = new sqlite3.Database('./db.sqlite', (err) => {
+const db = new sqlite3.Database('./db/db.sqlite', (err) => {
     if (err) {
         console.error('Fehler beim Verbinden mit der Datenbank:', err.message);
     } else {

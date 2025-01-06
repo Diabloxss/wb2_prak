@@ -1,28 +1,13 @@
-document.getElementById('login-form').addEventListener('submit', function(event) {
-    event.preventDefault(); // Verhindere das Standardformularverhalten
+const apiLoginUrl = 'http://localhost:8000/api/users/login';
 
-    const email = document.getElementById('email').value;
-    const password = document.getElementById('password').value;
+$('#loginForm').submit((event) => {
+    event.preventDefault();
+    const email = $('#email').val();
+    const password = $('#password').val();
 
-    // Senden der Login-Daten an das Backend
-    fetch('http://localhost:3000/login', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ email, password }),
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (data.success) {
-            alert('Login erfolgreich!');
-            window.location.href = 'profilseite.html'; // Weiterleitung zur Profilseite
-        } else {
-            alert('Login fehlgeschlagen. Bitte überprüfen Sie Ihre Anmeldedaten.');
-        }
-    })
-    .catch(error => {
-        console.error('Fehler beim Login:', error);
-        alert('Fehler beim Login. Bitte versuchen Sie es später erneut.');
+    $.post(apiLoginUrl, { email, password }, (response) => {
+        $('#message').text(response.message).css('color', 'green');
+    }).fail((xhr) => {
+        $('#message').text(xhr.responseJSON.error).css('color', 'red');
     });
 });

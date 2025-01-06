@@ -43,7 +43,7 @@ try {
     // provide service router with database connection / store the database connection in global server environment
     app.locals.dbConnection = dbConnection;
 
-    //vmaginas
+
     console.log('Binding middleware...');
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({ extended: true })); // Für Formulardaten
@@ -78,13 +78,6 @@ try {
     var ordersService = require('./services/ordersService.js');
     app.use(TOPLEVELPATH, ordersService); // Binds `/api/orders/...`
 
-    //vmaginas
-    const userController = require('./routes/userController');
-    app.use('/api/users', userController);
-
-    app.use(express.json());
-    const passwordResetRouter = require('./routes/passwordResetRouter'); // Pfad zum Router
-    app.use('/api', passwordResetRouter);
 
 
     // send default error message if no matching endpoint found
