@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitTime - Bestellbestätigung</title>
+    <link rel="icon" href="images/favicon.PNG" type="image/png">
+    <link rel="stylesheet" href="css/style.css"> 
+    
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <h1>FitTime</h1>
+    </header>
+
+    <!-- Bestellbestätigung -->
+    <div class="confirmation-container">
+        <h2>Bestellbestätigung</h2>
+        <p>Vielen Dank für Ihre Bestellung!</p>
+
+        <!-- Bestellinformationen -->
+        <div class="order-info"></div>
+
+        <!-- Lieferadresse -->
+        <div class="delivery-address"></div>
+
+        <!-- Bestellübersicht -->
+        <div class="order-summary">
+            <h3>Bestellübersicht</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Produkt</th>
+                        <th>Anzahl</th>
+                        <th>Einzelpreis</th>
+                        <th>Gesamt</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+                <tfoot></tfoot>
+            </table>
+        </div>
+
+        <!-- Buttons für Druck und Zahlungsinformationen -->
+        <div class="buttons">
+            <button onclick="window.print()" class="print-btn">Drucken</button>
+            <button onclick="window.location.href='zahlungsinformationen.html';" class="print-btn">Zu den Zahlungsinformationen</button>
+        </div>
+    </div>
+</body>
+</html>

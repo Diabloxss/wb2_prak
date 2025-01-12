@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitTime - Produktseite</title>
+    <link rel="icon" href="images/favicon.PNG" type="image/png">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script defer src="js/Cart Update.js"></script>
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <h1>FitTime</h1>
+    </header>
+
+    <!-- Navigation -->
+    <div class="navbar">
+        <a href="index.html">Home</a>
+        <a href="über_Uns.html">Über Uns</a>
+        <a href="shop.html">Shop</a>
+        <a href="kontakt.html">Kontakt</a>
+        <a href="profilseite.html">Profil</a>
+        <a href="warenkorb.html" class="cart-icon">
+            <i class="fas fa-shopping-cart"></i> 
+            <span id="cart-total">0,00€</span>
+        </a>
+    </div>
+
+    <!-- Zurück-Knopf -->
+    <div class="back-button-container">
+        <a href="shop.html" class="back-button"><i class="fas fa-arrow-left"></i> Zurück zum Shop</a>
+    </div>
+
+    <!-- Produktbereich -->
+    <div class="product-container">
+        <div class="product-image">
+            <img src="images/strawberry_whey_protein.jpg" alt="Strawberry Whey Protein" style="width: 100%; height: auto; border-radius: 8px;">
+        </div>
+        <div class="product-details">
+            <h2 id="product-name">Strawberry Whey Protein</h2>
+            <p class="price" id="product-price">34,99€</p>
+            
+            <label for="quantity">Menge</label>
+            <div class="quantity-container">
+                <button id="decrease-quantity" onclick="updateQuantity(-1)">-</button>
+                <input type="text" id="quantity" name="quantity" value="1" readonly>
+                <button id="increase-quantity" onclick="updateQuantity(1)">+</button>
+            </div>
+            
+            <!-- Hinzufügen zum Warenkorb -->
+            <button class="add-to-cart-btn" onclick="addToCart()">Zum Warenkorb hinzufügen</button>
+            
+            <div class="product-description">
+                <h3>Produktbeschreibung</h3>
+                <p>Strawberry Whey Protein definiert Deine Traumfigur. Das Strawberry Whey Protein eignet sich besonders für Sportler, 
+                    die langfristig ihre Fitness steigern möchten und Muskelmasse aufbauen wollen. 
+                    Das Designer Whey Protein enthält einen besonders hohen Proteinwert, wenig Kohlenhydrate und kaum Fett. 
+                    Der Anteil an Whey Isolat beim Strawberry Whey Protein beträgt über 30%... 
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <a href="impressum.html">Impressum</a>
+        <a href="datenschutz.html">Datenschutz</a>
+        <a href="agb.html">AGB</a>
+    </div>
+
+    <!-- JavaScript zur Funktionsimplementierung -->
+    <script src="js/product.js"></script>
+    
+</body>
+</html>
